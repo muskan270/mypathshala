@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --defaultBackground1: url(https://media.istockphoto.com/id/1058251118/photo/abstract-musical-background.jpg?s=2048x2048&w=is&k=20&c=t5u23eL4HA8E_KjQGMSzGT6mKpiB5IEx8nScQnJdlKo=);
+            --defaultBackground2: url(https://cdn.pixabay.com/photo/2016/02/03/13/05/buddha-1177009_1280.jpg);
+            --defaultBackground3: url(https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=600);
+            --defaultBackground4: url(https://img.freepik.com/free-photo/thinking-out-box-concept_53876-120968.jpg?size=626&ext=jpg&ga=GA1.1.216487802.1673630650&semt=ais_user);
+            --defaultBackground5: url(https://cdn.pixabay.com/photo/2024/05/24/16/40/ai-generated-8785422_640.jpg);
+            
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            transition: .25s;
+            background: #232223;
+            color: white;
+        }
+
+        .credit {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: inherit;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            overflow: hidden;
+            min-width: 600px;
+            max-width: 900px;
+            width: calc(100% - 100px);
+            height: 400px;
+        }
+
+        .option {
+            position: relative;
+            overflow: hidden;
+            min-width: 60px;
+            margin: 10px;
+            background-size: auto 120%;
+            background-position: center;
+            cursor: pointer;
+            transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+            flex-grow: 1;
+            border-radius: 30px;
+        }
+        .option:nth-child(1) {
+            background-image: var(--defaultBackground1);
+        }
+
+        .option:nth-child(2) {
+            background-image: var(--defaultBackground2);
+        }
+
+        .option:nth-child(3) {
+            background-image: var(--defaultBackground3);
+        }
+
+        .option:nth-child(4) {
+            background-image: var(--defaultBackground4);
+        }
+
+        .option:nth-child(5) {
+            background-image: var(--defaultBackground5);
+        }
+
+        
+        .option:nth-child(5) {
+            background-image: var(--defaultBackground6);
+        }
+
+
+        .option.active {
+            flex-grow: 10000;
+            transform: scale(1);
+            max-width: 600px;
+            margin: 0px;
+            border-radius: 40px;
+            background-size: auto 100%;
+        }
+
+        .option .shadow {
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: 120px;
+            transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+            box-shadow: inset 0 -120px 0px -120px black, inset 0 -120px 0px -100px black;
+        }
+
+        .option.active .shadow {
+            box-shadow: inset 0 -120px 120px -120px black, inset 0 -120px 120px -100px black;
+        }
+
+        .option .label {
+            display: flex;
+            position: absolute;
+            right: 0px;
+            height: 40px;
+            transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .option.active .label {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .option .label .icon {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-width: 40px;
+            max-width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            background-color: white;
+        }
+
+        .option .label .info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 10px;
+            color: white;
+            white-space: pre;
+        }
+
+        .option .label .info > div {
+            position: relative;
+            transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity .5s ease-out;
+        }
+
+        .option.active .label .info > div {
+            left: 0px;
+            opacity: 1;
+        }
+
+        .option .label .info .main {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .option .label .info .sub {
+            transition-delay: .1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="options">
+        <div class="option active" style="--optionBackground:url(https://media.istockphoto.com/id/1058251118/photo/abstract-musical-background.jpg?s=2048x2048&w=is&k=20&c=t5u23eL4HA8E_KjQGMSzGT6mKpiB5IEx8nScQnJdlKo=);">
+            <div class="shadow"></div>
+            <div class="label">
+                <div class="icon">
+                    <i class="fas fa-walking"></i>
+                </div>
+                <div class="info">
+                    <div class="main">
+                        <a href="./mindrelax/music.html" target="_blank" style="color: white; text-decoration: none;">
+                            Relax & Grow with music
+                        </a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="option" style="--optionBackground:url(https://cdn.pixabay.com/photo/2016/02/03/13/05/buddha-1177009_1280.jpg);">
+            <div class="shadow"></div>
+            <div class="label">
+                <div class="icon">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <div class="info">
+                    <div class="main">
+                        <a href="./mindrelax/mediation.html" target="_blank" style="color: white; text-decoration: none;">
+                            Meditation video
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="option" style="--optionBackground:url(https://images.pexels.com/photos/6898859/pexels-photo-6898859.jpeg?auto=compress&cs=tinysrgb&w=600);">
+            <div class="shadow"></div>
+            <div class="label">
+                <div class="icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <div class="info">
+                    <a href="./mindrelax/funny.html" target="_blank" style="color: white; text-decoration: none;">
+                        Relax with funny video
+                    </a>
+
+                    
+                </div>
+            </div>
+        </div>
+        <div class="option" style="--optionBackground:url(https://img.freepik.com/free-photo/thinking-out-box-concept_53876-120968.jpg?size=626&ext=jpg&ga=GA1.1.216487802.1673630650&semt=ais_user);">
+            <div class="shadow"></div>
+            <div class="label">
+                <div class="icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="info">
+                    <div class="main">
+                        <a href="./mindrelax/motivation.html" target="_blank" style="color: white; text-decoration: none;">
+                            Motivational video
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    <script>
+        document.querySelectorAll('.option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+    <a href="http://victorofvalencia-blog.tumblr.com" target="_blank" class="credit">Photos from Victor of Valencia on tumblr</a>
+</body>
+</html>

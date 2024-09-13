@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .book {
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .book img {
+            width: 80px;
+            height: 100px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .book-content {
+            flex: 1;
+        }
+
+        .book-title {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .book-price {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .book-calculation {
+            font-size: 16px;
+            color: #333;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .quantity-controls button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+
+        .quantity-controls button:hover {
+            background-color: #0056b3;
+        }
+
+        .quantity-controls .quantity {
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .total-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .pay-button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .pay-button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+    <div class="container" id="cart-container">
+        <!-- Cart items will be displayed here -->
+    </div>
+    <div class="total-container">
+        <div class="total" id="total-sum">
+            <!-- Total sum will be displayed here -->
+        </div>
+        <a href="../form123/userinfo.html" class="pay-button">Pay</a>
+    </div>
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cartContainer = document.getElementById('cart-container');
+            const totalSumElement = document.getElementById('total-sum');
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+            const updateCart = () => {
+                cartContainer.innerHTML = '';
+                let totalSum = 0;
+                cartItems.forEach((item, index) => {
+                    const bookElement = document.createElement('div');
+                    bookElement.classList.add('book');
+                    const itemTotalPrice = item.price * item.quantity;
+                    bookElement.innerHTML = `
+                        <img src="${item.image}" alt="${item.title}" class="book-image">
+                        <div class="book-content">
+                            <p class="book-title">${item.title}</p>
+                            <p class="book-price">Price: Rs. ${item.price}</p>
+                            <p class="book-calculation">Total: Rs. ${item.price} x ${item.quantity} = Rs. ${itemTotalPrice}</p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button class="decrease" data-index="${index}">-</button>
+                            <p class="quantity">${item.quantity}</p>
+                            <button class="increase" data-index="${index}">+</button>
+                        </div>
+                    `;
+                    cartContainer.appendChild(bookElement);
+                    totalSum += itemTotalPrice;
+                });
+                totalSumElement.textContent = `Total: Rs. ${totalSum}`;
+
+                document.querySelectorAll('.increase').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = e.target.getAttribute('data-index');
+                        cartItems[index].quantity++;
+                        localStorage.setItem('cart', JSON.stringify(cartItems));
+                        updateCart();
+                    });
+                });
+
+                document.querySelectorAll('.decrease').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = e.target.getAttribute('data-index');
+                        cartItems[index].quantity--;
+                        if (cartItems[index].quantity < 1) {
+                            cartItems.splice(index, 1);
+                        }
+                        localStorage.setItem('cart', JSON.stringify(cartItems));
+                        updateCart();
+                    });
+                });
+            };
+
+            if (cartItems.length === 0) {
+                cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                updateCart();
+            }
+        });
+    </script>
+</body>
+</html>

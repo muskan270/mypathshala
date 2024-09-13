@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/Cousres.css">
+
+    
+
+   
+  </head>
+
+  <body>
+    <header class="muskan-header" data-header>
+      <div class="muskan-container">
+  
+        <a href="../Home.html" class="muskan-logo">
+          <img src="../assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+        </a>
+  
+        <nav class="muskan-navbar" data-navbar>
+          <ul class="muskan-navbar-list">
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Home</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>About</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Courses</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Our Team</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Contact</a>
+            </li>
+  
+            <li class="muskan-navbar-item muskan-search-item">
+              <input type="text" id="muskan-topic-search-input" placeholder="Search topics..." />
+              <button id="muskan-search-topic-button">Search</button>
+            </li>
+  
+            
+  
+          </ul>
+        </nav>
+  
+        <button class="muskan-header-action-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+  
+        <div class="muskan-overlay" data-nav-toggler data-overlay></div>
+  
+      </div>
+    </header>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../Home.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="../Home.html">Popular Courses</a></li>
+        <li class="breadcrumb-item active" aria-current="page">CSS-Course</li>
+      </ol>
+    </nav>
+
+  
+    
+  
+    <div class="course-container">
+        <!-- Image and Pricing Box -->
+        <div id="imageBox" class="course-image-pricing">
+            <div class="course-image">
+                <img src="../assets/images/thumb-2.png" alt="Course Image">
+            </div>
+            <div class="pricing-container">
+                <div class="pricing">
+                    ₹399 <span class="original-price">₹3,699</span> <span class="discount">89% off</span>
+                </div>
+                <div class="countdown">⏳ 3 days left at this price!</div>
+                <button class="add-to-cart-button" onclick="showPaymentPopup()">Purchase</button>
+            </div>
+        </div>
+
+        <!-- Course Content Section -->
+        <div class="course-content">
+            <h1>CSS - The Complete Guide 2024 (incl. Flexbox, Grid & Sass)</h1>
+            <p>Learn CSS for the first time or brush up your CSS skills and dive in even deeper. EVERY web developer has to know CSS.</p>
+
+            <div class="rating">Rating: 6.7 out of 10</div>
+            <p>(397,889 ratings) 1,323,014 students</p>
+            <div class="details">
+                <span>Created by: Sajan Sharma, Developer and Lead Instructor</span>
+                <span>Last updated: 05/08/2024</span>
+                <span>Duration: 7 Weeks</span>
+                <span>Lessons: 10</span>
+                <span>Language: English / Hindi</span>
+                <span>Subtitles: English, Arabic [Auto], 14 more</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Pop-Up -->
+    <div id="paymentPopup" class="payment-popup">
+        <div class="popup-content">
+            <span class="close" onclick="hidePaymentPopup()">&times;</span>
+            <h2>Payment Details</h2>
+            <form id="paymentForm">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="upi">UPI</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+
+                <!-- UPI Payment Fields -->
+                <div id="upi-details" class="payment-method-details">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="Enter UPI ID">
+                </div>
+
+                <!-- Credit Card Payment Fields -->
+                <div id="credit-card-details" class="payment-method-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter card number">
+                    <label for="card-expiry">Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                    <label for="card-cvc">CVC:</label>
+                    <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Debit Card Payment Fields -->
+                <div id="debit-card-details" class="payment-method-details">
+                    <label for="debit-card-number">Card Number:</label>
+                    <input type="text" id="debit-card-number" name="debit-card-number" placeholder="Enter debit card number">
+                    <label for="debit-card-expiry">Expiry Date:</label>
+                    <input type="text" id="debit-card-expiry" name="debit-card-expiry" placeholder="MM/YY">
+                    <label for="debit-card-cvc">CVC:</label>
+                    <input type="text" id="debit-card-cvc" name="debit-card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Net Banking Payment Fields -->
+                <div id="net-banking-details" class="payment-method-details">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank-name" placeholder="Enter your bank name">
+                    <label for="account-number">Account Number:</label>
+                    <input type="text" id="account-number" name="account-number" placeholder="Enter account number">
+                </div>
+
+                <button type="submit">Pay ₹399</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Learn Section Moved to the Right Side -->
+    <div class="learn-section">
+      <h3>What you'll learn</h3>
+      <div class="learn-list">
+        <ul>
+          <li>Learn why CSS is amazing, not something to be afraid of!</li>
+          <li>Use basic as well as advanced CSS features</li>
+          <li>Flexbox, grid, animations, transitions, fonts, media queries and much more - it's all included!</li>
+        </ul>
+        <ul>
+          <li>Understand the concepts and theory behind CSS and certain CSS features</li>
+          <li>Build beautiful websites which don't just contain great content but also look good</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Existing content -->
+
+    <br />
+    <br />
+    <!-- Course Features Section -->
+    <!-- Course Features Section -->
+    <div class="course-features">
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-video"></i>
+          <span>10 hours on-demand video</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-file-alt"></i>
+          <span>10 articles</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-download"></i>
+          <span>10 downloadable resources</span>
+        </div>
+      </div>
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-tv"></i>
+          <span>Access on mobile and TV</span>
+        </div>
+        
+      </div>
+      <br />
+      <br />
+    </div>
+    <div class="container">
+      <h2>CSS Course Topics</h2>
+
+      <div class="accordion">
+        <!-- HTML Introduction -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(0, this)">
+            <span class="symbol">▶</span> 1. Basics of CSS
+            <span class="time">[5 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>CSS Rule Structure (Selector, Property, Value)</li>
+              <li>Type, Class, and ID Selectors</li>
+              <li>
+                Attribute Selectors 
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(1, this)">
+            <span class="symbol">▶</span> 2. CSS Layout Techniques
+            <span class="time">[8 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Display Property , Block, Inline, Inline-block          </li>
+              <li>None, Flex, Grid</li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Attributes -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(2, this)">
+            <span class="symbol">▶</span> 3. Styling Text,Font Properties
+            <span class="time">[6 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Font-Family, Font-Size, Font-Weight</li>
+              <li>Font-Style, Line-Height, Letter-Spacing</li>
+              <li>Text-Align, Vertical-Align</li>
+              <li>Text-Decoration, Text-Transform</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(3, this)">
+            <span class="symbol">▶</span> 4. Styling Links, Lists, and Tables
+            <span class="time">[10 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                Link States (hover, active, visited, focus)
+              </li>
+              <li>
+                Removing Underline, Changing Color
+              </li>
+              <li>List Style Type (bullet, number),
+                Customizing List Markers
+               </li>
+            </ul>
+          </div>
+        </div>
+
+    
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(4, this)">
+            <span class="symbol">▶</span> 5. CSS Effects and Animations
+            <span class="time">[7 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Transition Property, Duration, Timing Function</li>
+              <li>Hover Effects with Transitions</li>
+              <li>Translate, Rotate, Scale, Skew,
+                2D and 3D Transforms</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Media -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(5, this)">
+            <span class="symbol">▶</span> 6. Responsive Design
+            <span class="time">[9 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Min-Width, Max-Width Breakpoints</li>
+              <li>
+                Responsive Font Sizes and Layouts,Percentage-Based Widths
+                ,Flexible Images and Videos
+              </li>
+              <li>Embedding YouTube videos and iframes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Tables -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(6, this)">
+            <span class="symbol">▶</span> 7. CSS Frameworks and Preprocessors
+            <span class="time">[12 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                Variables, Nesting, Partials,
+Mixins and Functions
+              </li>
+              <li> Introduction to Sass, LESS, Stylus</li>
+              <li>ntroduction to Bootstrap, Foundation, Bulma,
+                Grid Systems in Frameworks</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(7, this)">
+            <span class="symbol">▶</span> 8. CSS Best Practices and Optimization
+            <span class="time">[5 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                Modular CSS (BEM, SMACSS, OOCSS),
+CSS Naming Conventions </li>
+              <li>
+                Minimizing CSS (minification),
+Reducing Repaints and Reflows
+              </li>
+              <li>Nesting lists for complex structures.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Semantic Elements and Accessibility -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(8, this)">
+            <span class="symbol">▶</span> 9. Advanced CSS Techniques
+            <span class="time">[8 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                Custom Properties (CSS Variables),
+Declaring and Using Variables,
+Inheritance and Fallbacks
+              </li>
+              <li>
+                Content Property,
+Styling First Letter, First Line, Before, After
+              </li>
+              <li>Attribute Selectors, Child Selectors,
+                Sibling Selectors, Not Selector</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="description-container">
+        <h1>description</h1>
+    
+        <p><strong>CSS Syntax and Selectors:</strong> CSS is used to style HTML elements on a webpage. It involves writing rules that consist of selectors (which target HTML elements) and declarations (which define the styles to be applied).</p>
+        
+        <p><strong>Structure of a CSS Rule:</strong> A CSS rule comprises a selector, a property, and a value. The selector identifies the HTML element(s) to style, the property specifies the aspect to change (like color or font-size), and the value gives the specific style to apply.</p>
+    
+        <p><strong>Comments in CSS:</strong> Comments are used to annotate code and are ignored by browsers. They are written using `/* comment */` and help in documenting the code for future reference or for other developers.</p>
+    
+        <div id="more-content" class="hidden-content">
+            
+            <p><strong>Box Model:</strong> The box model is a fundamental concept in CSS that describes how elements are structured. It includes the content, padding, border, and margin. Understanding the box model is crucial for layout design.</p>
+    
+            
+            <p><strong>Positioning:</strong> CSS positioning allows elements to be placed in specific locations on a webpage. The positioning types include static, relative, absolute, fixed, and sticky, each providing different ways to control element placement.</p>
+    
+            
+            <p><strong>Flexbox:</strong> Flexbox is a layout model that allows for the arrangement of elements in a one-dimensional space. It is ideal for creating responsive layouts that adjust automatically to different screen sizes.</p>
+    
+            
+            <p><strong>Grid Layout:</strong> CSS Grid Layout provides a two-dimensional grid system that enables the creation of complex layouts. It allows developers to define rows, columns, and areas within a grid container.</p>
+    
+           
+            <p><strong>Responsive Design:</strong> Responsive design involves creating web pages that adapt to various screen sizes. Techniques like media queries, flexible grids, and responsive images are used to achieve this.</p>
+    
+           
+            <p><strong>Typography:</strong> CSS controls the typography of a webpage, including font selection, size, weight, line height, and spacing. Good typography enhances readability and overall user experience.</p>
+    
+           
+            <p><strong>Transitions and Animations:</strong> CSS allows for smooth transitions and animations, enhancing the interactivity of a webpage. Transitions enable changes in property values to occur smoothly, while animations provide more complex visual effects.</p>
+    
+            
+            <p><strong>Transforms:</strong> CSS transforms allow elements to be scaled, rotated, skewed, or translated. These transformations can be used to create dynamic and visually appealing effects.</p>
+    
+            
+            <p><strong>CSS Variables:</strong> CSS variables, also known as custom properties, allow for the reuse of values throughout a stylesheet. They make it easier to manage and update styles, especially in large projects.</p>
+        </div>
+    </div>
+    
+      <button id="toggle-button">Show More</button>
+  </div>
+
+
+    <script>
+      function toggleAccordion(index, headerElement) {
+        const accordionContent =
+          document.querySelectorAll(".accordion-content")[index];
+        const symbol = headerElement.querySelector(".symbol");
+
+        if (
+          accordionContent.style.display === "none" ||
+          accordionContent.style.display === ""
+        ) {
+          accordionContent.style.display = "block";
+          symbol.textContent = "▼";
+        } else {
+          accordionContent.style.display = "none";
+          symbol.textContent = "▶";
+        }
+      }
+      // Show the payment pop-up
+      function showPaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "flex";
+      }
+
+      // Hide the payment pop-up
+      function hidePaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "none";
+        hideAllPaymentDetails(); // Hide all payment method fields when closing the pop-up
+      }
+
+      // Show or hide specific payment method details based on selection
+      function showPaymentDetails() {
+        var method = document.getElementById("payment-method").value;
+        hideAllPaymentDetails(); // Hide all payment method fields
+
+        // Show the selected payment method details
+        if (method === "upi") {
+          document.getElementById("upi-details").style.display = "block";
+        } else if (method === "credit-card") {
+          document.getElementById("credit-card-details").style.display =
+            "block";
+        } else if (method === "debit-card") {
+          document.getElementById("debit-card-details").style.display = "block";
+        } else if (method === "net-banking") {
+          document.getElementById("net-banking-details").style.display =
+            "block";
+        }
+      }
+
+      // Hide all payment method fields
+      function hideAllPaymentDetails() {
+        document
+          .querySelectorAll(".payment-method-details")
+          .forEach(function (details) {
+            details.style.display = "none";
+          });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ensure the DOM is fully loaded before running the script
+        document.getElementById("paymentForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          alert("Processing payment...");
+      
+          setTimeout(function () {
+            alert("Payment successful!");
+            
+            // Update breadcrumb to show "Course Payment"
+            const breadcrumbStep = document.getElementById("breadcrumb-step");
+            const breadcrumbFinal = document.getElementById("breadcrumb-final");
+      
+            // Debugging output
+            console.log("Breadcrumb Step Element:", breadcrumbStep);
+            console.log("Breadcrumb Final Element:", breadcrumbFinal);
+      
+            if (breadcrumbStep && breadcrumbFinal) {
+              breadcrumbStep.innerHTML = '<a href="HTML_Course.html">Course Payment</a>';
+              breadcrumbFinal.textContent = "Course Video";
+            } else {
+              console.error("Breadcrumb elements not found.");
+            }
+      
+            // Redirect to the purchased page
+            window.open("CSS_playlist1.html", "_blank");
+          }, 2000); // 2-second delay to simulate payment processing
+        });
+      });
+      
+      // Attach event listener to payment method dropdown
+      document
+        .getElementById("payment-method")
+        .addEventListener("change", showPaymentDetails);
+
+        document.getElementById("toggle-button").addEventListener("click", function() {
+          var content = document.getElementById("more-content");
+          var button = document.getElementById("toggle-button");
+      
+          if (content.style.display === "none" || content.style.display === "") {
+              content.style.display = "block";
+              button.textContent = "Show Less";
+          } else {
+              content.style.display = "none";
+              button.textContent = "Show More";
+          }
+      });
+
+      
+      
+    </script>
+  </body>
+</html>

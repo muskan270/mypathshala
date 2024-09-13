@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Checkout</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f0f0f0 0%, #f0f0f0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 10px 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            text-align: center;
+            width: calc(50% - 20px);
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-container.slide-in-right {
+            animation: slideInRight 0.5s ease-in-out;
+        }
+
+        .form-container.slide-in-left {
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+
+        .payment-method {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .payment-method label {
+            margin: 0;
+            font-weight: normal;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+            user-select: none;
+        }
+
+        .payment-method input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .payment-method .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        .payment-method input:checked ~ .checkmark {
+            background-color: #007bff;
+        }
+
+        .payment-method .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .payment-method input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .payment-method .checkmark:after {
+            top: 7px;
+            left: 7px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .payment-details {
+            display: none;
+        }
+
+        .payment-details.active {
+            display: block;
+        }
+
+        .qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="user-info-form" class="form-container active">
+            <h2>User Information</h2>
+            <form id="userForm">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="shippingAddress">Shipping Address:</label>
+                <input type="text" id="shippingAddress" name="shippingAddress" required>
+                <label for="billingAddress">Billing Address:</label>
+                <input type="text" id="billingAddress" name="billingAddress" required>
+                <button type="button" class="btn btn-full" onclick="nextForm()">Next</button>
+            </form>
+        </div>
+
+        <div id="payment-info-form" class="form-container">
+            <h2>Payment Details</h2>
+            <div class="payment-method">
+                <label><input type="radio" name="paymentMethod" value="card" checked onclick="showPaymentDetails('card')"> Credit/Debit Card<span class="checkmark"></span></label>
+                <label><input type="radio" name="paymentMethod" value="paypal" onclick="showPaymentDetails('paypal')"> PayPal<span class="checkmark"></span></label>
+                <label><input type="radio" name="paymentMethod" value="upi" onclick="showPaymentDetails('upi')"> UPI<span class="checkmark"></span></label>
+                <label><input type="radio" name="paymentMethod" value="netbanking" onclick="showPaymentDetails('netbanking')"> Net Banking<span class="checkmark"></span></label>
+            </div>
+            <form id="paymentForm">
+                <div id="card-details" class="payment-details active">
+                    <label for="cardName">Name on Card:</label>
+                    <input type="text" id="cardName" name="cardName">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv">
+                </div>
+                <div id="paypal-details" class="payment-details">
+                    <label for="paypalEmail">PayPal Email:</label>
+                    <input type="email" id="paypalEmail" name="paypalEmail">
+                </div>
+                <div id="upi-details" class="payment-details">
+                    <label for="upiId">UPI ID:</label>
+                    <input type="text" id="upiId" name="upiId">
+                </div>
+                <div id="netbanking-details" class="payment-details">
+                    <label for="bank">Select Bank:</label>
+                    <select id="bank" name="bank">
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                        <!-- Add more banks as needed -->
+                    </select>
+                    <label for="accountNumber">Account Number:</label>
+                    <input type="text" id="accountNumber" name="accountNumber">
+                    <label for="ifsc">IFSC Code:</label>
+                    <input type="text" id="ifsc" name="ifsc">
+                </div>
+                <button type="button" class="btn" onclick="previousForm()">Previous</button>
+                <button type="button" class="btn" onclick="generateQRCode()">Generate QR Code</button>
+            </form>
+            <div class="qr-code" id="qrCode"></div>
+        </div>
+    </div>
+
+    <script>
+        function nextForm() {
+            const userInfoForm = document.getElementById('user-info-form');
+            const paymentInfoForm = document.getElementById('payment-info-form');
+            
+            userInfoForm.classList.remove('active', 'slide-in-left');
+            paymentInfoForm.classList.add('active', 'slide-in-right');
+        }
+
+        function previousForm() {
+            const userInfoForm = document.getElementById('user-info-form');
+            const paymentInfoForm = document.getElementById('payment-info-form');
+            
+            paymentInfoForm.classList.remove('active', 'slide-in-right');
+            userInfoForm.classList.add('active', 'slide-in-left');
+        }
+
+        function showPaymentDetails(method) {
+            const paymentDetails = document.querySelectorAll('.payment-details');
+            paymentDetails.forEach(detail => detail.classList.remove('active'));
+
+            const selectedDetail = document.getElementById(`${method}-details`);
+            selectedDetail.classList.add('active');
+        }
+
+        function generateQRCode() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const shippingAddress = document.getElementById('shippingAddress').value;
+            const billingAddress = document.getElementById('billingAddress').value;
+
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            let paymentData = '';
+            if (paymentMethod === 'card') {
+                const cardName = document.getElementById('cardName').value;
+                const cardNumber = document.getElementById('cardNumber').value;
+                const expiryDate = document.getElementById('expiryDate').value;
+                const cvv = document.getElementById('cvv').value;
+                paymentData = `Card Name: ${cardName}, Card Number: ${cardNumber}, Expiry Date: ${expiryDate}, CVV: ${cvv}`;
+            } else if (paymentMethod === 'paypal') {
+                const paypalEmail = document.getElementById('paypalEmail').value;
+                paymentData = `PayPal Email: ${paypalEmail}`;
+            } else if (paymentMethod === 'upi') {
+                const upiId = document.getElementById('upiId').value;
+                paymentData = `UPI ID: ${upiId}`;
+            } else if (paymentMethod === 'netbanking') {
+                const bank = document.getElementById('bank').value;
+                const accountNumber = document.getElementById('accountNumber').value;
+                const ifsc = document.getElementById('ifsc').value;
+                paymentData = `Bank: ${bank}, Account Number: ${accountNumber}, IFSC: ${ifsc}`;
+            }
+
+            const qrData = `Name: ${name}, Email: ${email}, Phone: ${phone}, Shipping Address: ${shippingAddress}, Billing Address: ${billingAddress}, Payment Method: ${paymentMethod}, ${paymentData}`;
+            const qrCodeImage = document.getElementById('qrCode');
+            qrCodeImage.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(qrData)}&size=150x150" alt="QR Code">`;
+        }
+    </script>
+</body>
+</html>

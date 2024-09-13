@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../assets/css/Cousres.css">
+
+   
+  </head>
+
+  <body>
+
+    <header class="muskan-header" data-header>
+      <div class="muskan-container">
+  
+        <a href="../Home.html" class="muskan-logo">
+          <img src="../assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+        </a>
+  
+        <nav class="muskan-navbar" data-navbar>
+          <ul class="muskan-navbar-list">
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Home</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>About</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Courses</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Our Team</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Contact</a>
+            </li>
+  
+            <li class="muskan-navbar-item muskan-search-item">
+              <input type="text" id="muskan-topic-search-input" placeholder="Search topics..." />
+              <button id="muskan-search-topic-button">Search</button>
+            </li>
+  
+            
+  
+          </ul>
+        </nav>
+  
+        <button class="muskan-header-action-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+  
+        <div class="muskan-overlay" data-nav-toggler data-overlay></div>
+  
+      </div>
+    </header>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../Home.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="../Home.html">Popular Courses</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Php-Course</li>
+      </ol>
+    </nav>
+    
+    
+  
+    <div class="course-container">
+        <!-- Image and Pricing Box -->
+        <div id="imageBox" class="course-image-pricing">
+            <div class="course-image">
+                <img src="../assets/images/thumb-7.png" alt="Course Image">
+            </div>
+            <div class="pricing-container">
+                <div class="pricing">
+                    ₹1500<span class="original-price">₹3,699</span> <span class="discount">89% off</span>
+                </div>
+                <div class="countdown">⏳ 4 days left at this price!</div>
+                <button class="add-to-cart-button" onclick="showPaymentPopup()">Purchase</button>
+            </div>
+        </div>
+
+        <!-- Course Content Section -->
+        <div class="course-content">
+            <h1>The Complete Guide to php</h1>
+            <p>Go From Beginner To php Master In A Single Day!</p>
+
+            <div class="rating">Rating: 7 out of 10</div>
+            <p>(397,889 ratings) 1,323,014 students</p>
+            <div class="details">
+                <span>Created by: Muskan, Developer and Lead Instructor</span>
+                <span>Last updated: 05/08/2024</span>
+                <span>Duration: 5 Weeks</span>
+                <span>Lessons: 9</span>
+                <span>Language: English / Hindi</span>
+                <span>Subtitles: English, Arabic [Auto], 14 more</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Pop-Up -->
+    <div id="paymentPopup" class="payment-popup">
+        <div class="popup-content">
+            <span class="close" onclick="hidePaymentPopup()">&times;</span>
+            <h2>Payment Details</h2>
+            <form id="paymentForm">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="upi">UPI</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+
+                <!-- UPI Payment Fields -->
+                <div id="upi-details" class="payment-method-details">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="Enter UPI ID">
+                </div>
+
+                <!-- Credit Card Payment Fields -->
+                <div id="credit-card-details" class="payment-method-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter card number">
+                    <label for="card-expiry">Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                    <label for="card-cvc">CVC:</label>
+                    <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Debit Card Payment Fields -->
+                <div id="debit-card-details" class="payment-method-details">
+                    <label for="debit-card-number">Card Number:</label>
+                    <input type="text" id="debit-card-number" name="debit-card-number" placeholder="Enter debit card number">
+                    <label for="debit-card-expiry">Expiry Date:</label>
+                    <input type="text" id="debit-card-expiry" name="debit-card-expiry" placeholder="MM/YY">
+                    <label for="debit-card-cvc">CVC:</label>
+                    <input type="text" id="debit-card-cvc" name="debit-card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Net Banking Payment Fields -->
+                <div id="net-banking-details" class="payment-method-details">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank-name" placeholder="Enter your bank name">
+                    <label for="account-number">Account Number:</label>
+                    <input type="text" id="account-number" name="account-number" placeholder="Enter account number">
+                </div>
+
+                <button type="submit">Pay ₹1500</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Learn Section Moved to the Right Side -->
+    <div class="learn-section">
+      <h3>What you'll learn</h3>
+      <div class="learn-list">
+        <ul>
+          <li>Kickstart your tech career: Learn PHP, the language that powers more than 75% of websites, to land your first job, become a well-paid freelancer or get promoted</li>
+          <li>Lay solid programming foundations: once you know PHP, learning other languages will become much easier</li>
+          <li>Grasp the 'why' behind PHP: Only the most sought-after web developers know this</li>
+        </ul>
+        <ul>
+          <li>Master the MVC framework: Develop your own MVC framework, which enables you to write large-scale web applications and charge higher prices for your projects</li>
+          <li>Learn modern PHP: PHP has changed a lot. Master the modern way of writing PHP, and get ready to actually use it in the current workplace</li>
+          <li>Focus on building: Together, we will create simple websites, image galleries, login systems and even a fully fledged content management system (CMS)</li>
+        
+        </ul>
+      </div>
+    </div>
+
+    <!-- Existing content -->
+
+    <br />
+    <br />
+    <!-- Course Features Section -->
+    <!-- Course Features Section -->
+    <div class="course-features">
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-video"></i>
+          <span>4.5 hours on-demand video</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-file-alt"></i>
+          <span>9 articles</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-download"></i>
+          <span>13 downloadable resources</span>
+        </div>
+      </div>
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-tv"></i>
+          <span>Access on mobile and TV</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-certificate"></i>
+          <span>Certificate of completion</span>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+    <div class="container">
+      <h2>php Course Topics</h2>
+
+      <div class="accordion">
+        <!-- HTML Introduction -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(0, this)">
+            <span class="symbol">▶</span> 1.  Introduction to PHP
+            <span class="time">[5 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>What is PHP?</li>
+              <li>History of PHP</li>
+            <li> PHP Installation and Setup</li>
+              <li>PHP Syntax and Structure</li>
+                <li>PHP Configuration (php.ini)</li>
+                    <li>Running PHP Scripts (CLI and Web Server)</li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Elements and Tags -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(1, this)">
+            <span class="symbol">▶</span> 2. PHP Variables and Data Types
+            <span class="time">[8 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Declaring Variables</li>
+                <li>Variable Scope (Local, Global, Static)</li>
+                <li>Data Types (String, Integer, Float, Boolean, Array, Object, NULL)</li>
+            <li> Type Casting and Conversion
+                Constants</li>
+            
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Attributes -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(2, this)">
+            <span class="symbol">▶</span> 3. Control Structures
+            <span class="time">[6 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Conditional Statements (if, else, elseif, switch)</li>
+            <li> Loops (for, while, do-while, foreach)</li>
+        <li>Break and Continue Statements</li>
+    <li>Using goto</li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Forms -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(3, this)">
+            <span class="symbol">▶</span> 4. Functions
+            <span class="time">[10 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Defining Functions</li>
+                <li>Function Parameters and Return Values</li>
+            <li> Variable Scope in Functions</li>
+        <li>  Function Overloading (PHP doesn’t support true overloading, but you can achieve similar behavior)</li>
+    <li>  Anonymous Functions and Closures</li>
+<li>   Recursion</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Links and Navigation -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(4, this)">
+            <span class="symbol">▶</span> 5.  Arrays and Array Functions
+            <span class="time">[7 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Indexed Arrays</li>
+              <li>Associative Arrays</li>
+              <li> Multidimensional Arrays</li>
+              <li>Array Functions (array_merge, array_filter, array_map, etc.)</li>
+              <li>Sorting Arrays (sort, rsort, ksort, etc.)</li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Media -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(5, this)">
+            <span class="symbol">▶</span> 6. String Manipulation
+            <span class="time">[9 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>String Functions (strlen, strpos, substr, etc.)</li>
+            <li> String Formatting (sprintf, printf)</li>
+        <li>    String Replacement (str_replace, preg_replace)</li>
+    <li>String Concatenation</li>
+<li>Regular Expressions in PHP</li>
+             
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Tables -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(6, this)">
+            <span class="symbol">▶</span> 7. File Handling
+            <span class="time">[12 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                File Opening, Reading, and Writing
+<li>File Uploads</li>
+<li>File Permissions and Ownership</li>
+<li>Handling Errors in File Operations</li>
+<li>Using fopen, fread, fwrite, file_get_contents, file_put_contents, etc.</li>
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Lists -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(7, this)">
+            <span class="symbol">▶</span> 8. Sessions and Cookies
+            <span class="time">[5 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+            <li>Starting and Managing Sessions (session_start, $_SESSION) </li>
+        <li>Session Variables </li>
+    <li>Destroying Sessions </li>
+<li>Setting and Retrieving Cookies (setcookie, $_COOKIE) </li>
+<li>Cookie Expiration and Security </li>
+             
+              
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Semantic Elements and Accessibility -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(8, this)">
+            <span class="symbol">▶</span> 9. Database Interaction with MySQL
+            <span class="time">[15 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+            <li>Connecting to MySQL using MySQLi or PDO</li>
+        <li>Executing SQL Queries (SELECT, INSERT, UPDATE, DELETE)</li>
+    <li>Prepared Statements and Parameterized Queries</li>
+<li>Error Handling in Database Operations</li>
+<li>Fetching Data (fetch_assoc, fetch_object, fetch_array)</li>
+<li>Transactions and Rollbacks</li>
+              
+            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="description-container">
+        <h1>Description</h1>
+        
+        <p><strong> Learn the modern way of writing PHP</strong> -with 30 interactive exercises ! It’s an absolutely fundamental tool that every web developer uses daily, and it also happens to be very easy (and even fun) to learn. HTML is the language that provides all the content on a webpage: the text, images, links, forms, videos, and more! Learning HTML is the first step in any web development journey, and this course teaches you all the HTML you need to know.</p>
+    
+        <p>This course starts at the very beginning and covers all the essential HTML elements and tags. You’ll learn how to work with text elements, links, images, audio, video, tables, forms, and semantic elements. By the end of the course you’ll be an HTML master. <strong>And the best part? The whole course can be completed in a single day!</strong></p>
+        
+        <div id="more-content" class="hidden-content">
+            <h2>Hands On Learning</h2>
+            <p>This course is structured like an in-person course. You get a chance to practice what you’re learning in every section with exercises, activities, and small projects. Instead of just watching me code, you’ll write your own HTML code and websites. I’ve spent years figuring out how to create compelling online courses, and I feel this is my best one yet!</p>
+    
+            <h2>About me</h2>
+            <p>I’ve taught millions of students over the last decade, both online and in-person. My specialty is helping complete beginners change careers and break into web development roles. I teach online but also lead intensive in-person coding bootcamps. My experience teaching in a classroom informs the structure and content of all my online courses.</p>
+    
+            <p>You’ll learn about dozens of HTML elements, including:</p>
+            <ul>
+              
+            </ul>
+        </div>
+
+      <button id="toggle-button">Show More</button>
+  </div>
+
+
+    <script>
+      function toggleAccordion(index, headerElement) {
+        const accordionContent =
+          document.querySelectorAll(".accordion-content")[index];
+        const symbol = headerElement.querySelector(".symbol");
+
+        if (
+          accordionContent.style.display === "none" ||
+          accordionContent.style.display === ""
+        ) {
+          accordionContent.style.display = "block";
+          symbol.textContent = "▼";
+        } else {
+          accordionContent.style.display = "none";
+          symbol.textContent = "▶";
+        }
+      }
+      // Show the payment pop-up
+      function showPaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "flex";
+      }
+
+      // Hide the payment pop-up
+      function hidePaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "none";
+        hideAllPaymentDetails(); // Hide all payment method fields when closing the pop-up
+      }
+
+      // Show or hide specific payment method details based on selection
+      function showPaymentDetails() {
+        var method = document.getElementById("payment-method").value;
+        hideAllPaymentDetails(); // Hide all payment method fields
+
+        // Show the selected payment method details
+        if (method === "upi") {
+          document.getElementById("upi-details").style.display = "block";
+        } else if (method === "credit-card") {
+          document.getElementById("credit-card-details").style.display =
+            "block";
+        } else if (method === "debit-card") {
+          document.getElementById("debit-card-details").style.display = "block";
+        } else if (method === "net-banking") {
+          document.getElementById("net-banking-details").style.display =
+            "block";
+        }
+      }
+
+      // Hide all payment method fields
+      function hideAllPaymentDetails() {
+        document
+          .querySelectorAll(".payment-method-details")
+          .forEach(function (details) {
+            details.style.display = "none";
+          });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ensure the DOM is fully loaded before running the script
+        document.getElementById("paymentForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          alert("Processing payment...");
+      
+          setTimeout(function () {
+            alert("Payment successful!");
+            
+            // Update breadcrumb to show "Course Payment"
+            const breadcrumbStep = document.getElementById("breadcrumb-step");
+            const breadcrumbFinal = document.getElementById("breadcrumb-final");
+      
+            // Debugging output
+            console.log("Breadcrumb Step Element:", breadcrumbStep);
+            console.log("Breadcrumb Final Element:", breadcrumbFinal);
+      
+            if (breadcrumbStep && breadcrumbFinal) {
+              breadcrumbStep.innerHTML = '<a href="php_course.html">Course Payment</a>';
+              breadcrumbFinal.textContent = "Course Video";
+            } else {
+              console.error("Breadcrumb elements not found.");
+            }
+      
+            // Redirect to the purchased page
+            window.open("playlist_php.html", "_blank");
+          }, 2000); // 2-second delay to simulate payment processing
+        });
+      });
+      
+      // Attach event listener to payment method dropdown
+      document
+        .getElementById("payment-method")
+        .addEventListener("change", showPaymentDetails);
+
+        document.getElementById("toggle-button").addEventListener("click", function() {
+          var content = document.getElementById("more-content");
+          var button = document.getElementById("toggle-button");
+      
+          if (content.style.display === "none" || content.style.display === "") {
+              content.style.display = "block";
+              button.textContent = "Show Less";
+          } else {
+              content.style.display = "none";
+              button.textContent = "Show More";
+          }
+      });
+
+      
+      
+    </script>
+  </body>
+</html>

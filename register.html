@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .registration-form {
+            background: #fff;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .registration-form h2 {
+            padding: 35px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .registration-form .form-content {
+            padding: 35px;
+            text-align: center;
+        }
+
+        .registration-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .registration-form .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .registration-form .form-group input,
+        .registration-form .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            -webkit-transition: all .2s;
+            transition: all .2s;
+        }
+
+        .registration-form .form-group input:focus,
+        .registration-form .form-group select:focus {
+            border-color: #222;
+        }
+
+        .registration-form .form-group a {
+            text-decoration: none;
+            display: block;
+        }
+
+        .registration-form .form-group button {
+            width: 100%;
+            border: none;
+            padding: 18px;
+            font-family: 'Rubik', sans-serif;
+            cursor: pointer;
+            text-transform: uppercase;
+            background: #2d3b55;
+            color: #fff;
+            border-radius: 4px;
+            letter-spacing: 0.2px;
+            outline: 0;
+            -webkit-transition: all .3s;
+            transition: all .3s;
+        }
+
+        .registration-form .form-group button:hover {
+            background: #3c4d6d;
+        }
+
+        .registration-form .form-group a:hover button {
+            background: #3c4d6d;
+        }
+
+        .registration-form .form-group a {
+            text-decoration: none;
+            color: #747474;
+            letter-spacing: 0.2px;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <div class="form-content">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="registerButton">Register</button>
+                </div>
+                <div class="form-group">
+                    <a href="./login.html">Already have an account? Sign in</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = document.getElementById('registrationForm');
+    
+            // Validate form
+            if (form.checkValidity()) {
+                // Get form values
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const phone = document.getElementById('phone').value;
+                const dob = document.getElementById('dob').value;
+                const gender = document.getElementById('gender').value;
+    
+                // Create a user object
+                const newUser = { fullName, email, password, phone, dob, gender };
+    
+                // Fetch existing users from localStorage (if any)
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+    
+                // Check if the email is already registered
+                const isEmailTaken = users.some(user => user.email === email);
+    
+                if (isEmailTaken) {
+                    alert('This email is already registered. Please use a different email.');
+                    return;
+                }
+    
+                // Add new user to the list of users
+                users.push(newUser);
+    
+                // Save updated users list to localStorage
+                localStorage.setItem('users', JSON.stringify(users));
+    
+                // Optional: Store the current user as 'registeredUser' if needed
+                localStorage.setItem('registeredUser', JSON.stringify(newUser));
+    
+                // Redirect to login page
+                alert('Registration successful! Please log in.');
+                window.location.href = 'login.html';
+            } else {
+                // Trigger form validation if not valid
+                form.reportValidity();
+            }
+        });
+    </script>
+    
+</body>
+</html>

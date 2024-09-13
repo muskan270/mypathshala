@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Book Gallery</h1>
+        <ul>
+            <li><a href="add_to_cart.html" id="cart-link">Cart <span id="cart-count">0</span></a></li>
+        </ul>
+    </header>
+    <div class="container">
+        <!-- Initial Books -->
+        <div class="book" data-title="learn-python" data-price="300" data-id="1">
+            <a href="">
+                <img src="images/python1.png" alt="Book 1 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/learn-python-fast-deep-simple-obooko.pdf" target="_blank">learn-python</a>
+            </p>
+            <h2>Rs. 300</h2>
+            <a href="books/learn-python-fast-deep-simple-obooko.pdf" target="_blank"><button class="">Trial for Free</button></a>
+            <a href="books/learn-python-fast-deep-simple-obooko.pdf" download="learn-python.pdf">
+                <button class="download-button">Download</button>
+            </a>
+        </div>
+        <div class="book" data-title="LINUX" data-price="300" data-id="2">
+            <a href="" target="_blank">
+                <img src="images/linux.png" alt="Book 2 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/linux-commands-c-c++-java-python-exercise-for-beginners-obooko.pdf" target="_blank">LINUX</a>
+            </p>
+            <h2>Rs. 300</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+        <div class="book" data-title="SQL" data-price="250" data-id="3">
+            <a href="books/introduction-to-sql-obooko.pdf" target="_blank">
+                <img src="images/sql.png" alt="Book 3 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/introduction-to-sql-obooko.pdf" target="_blank">SQL</a>
+            </p>
+            <h2>Rs. 250</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+
+        <!-- Hidden Books -->
+        <div class="book" data-title="PHP" data-price="400" data-id="4">
+            <a href="books/php-hints-and-tips-obooko.pdf" target="_blank">
+                <img src="images/php.png" alt="Book 4 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/php-hints-and-tips-obooko.pdf" target="_blank">PHP</a>
+            </p>
+            <h2 class="price">Rs. 400</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+        
+        <div class="book hidden" data-title="C++" data-price="350" data-id="5">
+            <a href="books/C++.pdf" target="_blank">
+                <img src="images/C++.png" alt="Book 5 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/C++.pdf" target="_blank">C++</a>
+            </p>
+            <h2>Rs. 350</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+        <div class="book hidden" data-title="FULL-STACK REACT" data-price="500" data-id="6">
+            <a href="books/ReactJSNotesForProfessionals.pdf" target="_blank">
+                <img src="images/React.png" alt="Book 6 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/ReactJSNotesForProfessionals.pdf" target="_blank">FULL-STACK REACT</a>
+            </p>
+            <h2>Rs. 500</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+        <div class="book hidden" data-title="MEAN STACK DEVELOPMENT" data-price="600" data-id="7">
+            <a href="books/Pro MERN Stack.pdf" target="_blank">
+                <img src="images/MERN.png" alt="Book 7 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/Pro MERN Stack.pdf" target="_blank">MEAN STACK DEVELOPMENT</a>
+            </p>
+            <h2>Rs. 600</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+        <div class="book hidden" data-title="JAVA" data-price="400" data-id="8">
+            <a href="books/JavaNotesForProfessionals.pdf" target="_blank">
+                <img src="images/Java.png" alt="Book 8 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/JavaNotesForProfessionals.pdf" target="_blank">JAVA</a>
+            </p>
+            <h2>Rs. 400</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+        <div class="book hidden" data-title="MACHINE LEARNING WITH PYTorch AND SCIKIT-LEARN" data-price="500" data-id="9"> 
+            <a href="books/A Course in Machine Learning.pdf" target="_blank">
+                <img src="images/machine.png" alt="Book 9 Title">
+            </a>
+            <p class="book-title">
+                <a href="books/A Course in Machine Learning.pdf" target="_blank">MACHINE LEARNING WITH PYTorch AND SCIKIT-LEARN</a>
+            </p>
+            <h2>Rs. 500</h2>
+            <button class="purchase-button">Add to Cart</button>
+        </div>
+    </div>
+    <button id="more-button">More</button>
+    <footer>
+        <p>&copy; 2024 My Book Gallery</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const purchaseButtons = document.querySelectorAll('.purchase-button');
+            const cartCount = document.getElementById('cart-count');
+            const moreButton = document.getElementById('more-button');
+            const hiddenBooks = document.querySelectorAll('.book.hidden');
+    
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            const updateCartCount = () => {
+                const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+            };
+    
+            updateCartCount();
+    
+            purchaseButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const bookElement = event.target.closest('.book');
+                    const id = bookElement.dataset.id;
+                    const title = bookElement.dataset.title;
+                    const price = parseFloat(bookElement.dataset.price);
+                    const image = bookElement.querySelector('img').src;
+    
+                    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === id);
+                    if (existingItemIndex === -1) {
+                        cartItems.push({ id, title, price, image, quantity: 1 });
+                    } else {
+                        cartItems[existingItemIndex].quantity++;
+                    }
+    
+                    localStorage.setItem('cart', JSON.stringify(cartItems));
+                    updateCartCount();
+    
+                    alert(`${title} has been added to your cart.`);
+                });
+            });
+    
+            moreButton.addEventListener('click', () => {
+                hiddenBooks.forEach(book => {
+                    book.classList.remove('hidden');
+                });
+                moreButton.style.display = 'none'; // Hide the "More" button after showing all books
+            });
+        });
+    </script>
+</body>
+</html>

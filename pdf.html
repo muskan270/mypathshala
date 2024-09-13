@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio PDF Reader</title>
+    <link rel="stylesheet" href="./assets/css/style13.css">
+    <style>
+        /* Basic styles for the navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: auto;
+        }
+
+        /* Marquee styling */
+       
+
+        /* Hamburger menu styling */
+        .hamburger-container {
+            display: flex;
+            align-items: flex-start;
+            padding: 10px;
+
+           
+            margin-top: -100px;
+        }
+
+        .hamburger-menu {
+            position: relative;
+            margin-top: 10px; /* Space between marquee and hamburger icon */
+        }
+
+        .hamburger-icon {
+            cursor: pointer;
+            font-size: 40px;
+            margin: +45px;
+            padding: 10px;
+            margin-left: -15px;
+            margin-top: -35px;
+            color: rgb(35, 28, 232);
+            transition: transform 0.4s ease, background-color 0.4s ease;
+            border-radius: 8px;
+        }
+
+        .hamburger-icon:hover {
+            transform: rotate(90deg); /* Rotate the icon on hover */
+            background-color: WHITE; /* Change background color on hover */
+        }
+
+        .navbar-buttons {
+            display: none; /* Initially hidden */
+            flex-direction: column;
+            position: absolute;
+            top: 60px; /* Adjusted position to align with hamburger icon */
+            left: 0;
+            background-color: #333;
+            width: 250px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            z-index: 1;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-buttons.active {
+            display: flex; /* Show when active */
+        }
+
+        .navbar-buttons button,
+        .navbar-buttons select,
+        .navbar-buttons .dropdown {
+            background-color: #444;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            border: none;
+            margin-bottom: 12px; /* Increased margin between buttons */
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover effect with unique animation */
+        .navbar-buttons button:hover,
+        .navbar-buttons select:hover,
+        .navbar-buttons .dropdown:hover {
+            background-color: #555;
+            transform: translateX(10px); /* Move the button to the right */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-buttons button::before,
+        .navbar-buttons select::before,
+        .navbar-buttons .dropdown::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-buttons button:hover::before,
+        .navbar-buttons select:hover::before,
+        .navbar-buttons .dropdown:hover::before {
+            left: 0;
+        }
+
+        .navbar-buttons .dropdown-content {
+            display: none;
+            background-color: #333;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-buttons .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Dictionary Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            right: 10px; /* Positioned to the right side of the viewport */
+            top: 20%;
+            width: 320px; /* Adjusted width for better visibility */
+            background-color: #fff;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .modal-content {
+            padding: 20px;
+            text-align: left;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        /* Navbar container */
+.muskan-header {
+    background-color: #ffffff; /* White background */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 10px 20px; /* Padding around the navbar */
+    position: relative;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+  }
+  
+  .muskan-header .muskan-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Logo */
+  .muskan-logo img {
+    width: 60px; /* Adjust the size of the logo */
+    height: auto;
+  }
+  
+  /* Navbar */
+  .muskan-navbar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+  }
+  
+  /* Navbar items */
+  .muskan-navbar-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+  }
+  
+  .muskan-navbar-item {
+    margin-left: 20px;
+  }
+  
+  .muskan-navbar-link {
+    color: #000000; /* Black text color */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .muskan-navbar-link:hover {
+    color: #007bff; /* Blue color on hover */
+  }
+  
+  /* Search box */
+  .muskan-search-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  #muskan-topic-search-input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    width: 200px;
+    transition: width 0.3s;
+  }
+  
+  #muskan-topic-search-input:focus {
+    width: 250px;
+  }
+  
+  #muskan-search-topic-button {
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #muskan-search-topic-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Log in button */
+  .muskan-sign-in {
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .muskan-sign-in:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Responsive Menu Button */
+  .muskan-header-action-btn {
+    display: none; /* Hide menu button on larger screens */
+  }
+  
+  @media (max-width: 768px) {
+    .muskan-header-action-btn {
+      display: block;
+    }
+  
+    .muskan-navbar {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+  
+    .muskan-navbar-list {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .muskan-navbar-item {
+      margin-left: 0;
+      width: 100%;
+      text-align: left;
+      padding: 10px 20px;
+    }
+  
+    .muskan-navbar-item.muskan-search-item {
+      padding: 10px 20px;
+    }
+  
+    .muskan-navbar.active {
+      display: flex;
+    }
+  
+    .muskan-overlay {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+  }
+  
+    </style>
+</head>
+<body>
+    <header class="muskan-header" data-header>
+        <div class="muskan-container">
+    
+          <a href="#" class="muskan-logo">
+            <img src="./assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+          </a>
+    
+          <nav class="muskan-navbar" data-navbar>
+            <ul class="muskan-navbar-list">
+    
+              <li class="muskan-navbar-item">
+                <a href="#home" class="muskan-navbar-link" data-nav-link><b>Home</b></a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="#about" class="muskan-navbar-link" data-nav-link><b>About</b></a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="#courses" class="muskan-navbar-link" data-nav-link><b>Courses</b></a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="#Our Team" class="muskan-navbar-link" data-nav-link><b>Our Team</b></a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="#contact" class="muskan-navbar-link" data-nav-link><b>Contact</b></a>
+              </li>
+    
+              <li class="muskan-navbar-item muskan-search-item">
+                <input type="text" id="muskan-topic-search-input" placeholder="Search topics..." />
+                <button id="muskan-search-topic-button">Search</button>
+              </li>
+    
+              <li>
+                <a href="./register.html" class="muskan-sign-in">Log in</a>
+              </li>
+    
+            </ul>
+          </nav>
+    
+          <button class="muskan-header-action-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+    
+          <div class="muskan-overlay" data-nav-toggler data-overlay></div>
+    
+        </div>
+      </header>
+      <div class="marquee-container">
+    <marquee class="marquee">Welcome to E_pathshala Expression a new form of Study</marquee>
+</div>
+    <!-- Hamburger Icon Container -->
+    <div class="hamburger-container">
+        <div class="hamburger-menu">
+            <div class="hamburger-icon">&#9776;</div>
+            <div class="navbar-buttons">
+                <button id="home-button" title="Go to the home page" onclick="window.location.href="">Home</button>
+                <button id="choose-pdf-button" title="Choose PDF" onclick="document.getElementById('pdf-input').click()">Choose PDF</button>
+                <button id="read-pdf-button" title="Start reading the selected PDF">Start Reading</button>
+                <button id="pause-button" title="Pause the reading">Pause</button>
+                <button id="resume-button" title="Resume reading">Resume</button>
+                <button id="stop-button" title="Stop reading">Stop</button>
+                <select id="language-select" title="Select language for reading. In the future, we'll add a feature to use Google Translate to change the language and read and listen to the audio PDF in your chosen language option.">
+                    <option value="en-US" selected>English</option>
+                    <option value="hi-IN">Hindi</option>
+                </select>
+                
+                <!-- Dropdown Menu -->
+                <div class="dropdown">
+                    <button class="dropbtn" title="Free pdf which present here for demo">Select PDF/Book</button>
+                    <div class="dropdown-content">
+                        <a href="assets/BOOK_PDF/Core Module 1 - Theory Manual.pdf" class="pdf-item" data-file="pdf1.pdf">PDF 1</a>
+                        <a href="assets/BOOK_PDF/Core Module_3_Theory Manual_merged.pdf" class="pdf-item" data-file="pdf2.pdf">PDF 2</a>
+                        <a href="assets/BOOK_PDF/HTML_BOOK.pdf" class="pdf-item" data-file="book1.pdf">Book 1</a>
+                        <a href="assets/BOOK_PDF/JavaScript Book.pdf" class="pdf-item" data-file="book2.pdf">Book 2</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Audio PDF Reader</h1>
+        <input type="file" id="pdf-input" accept="application/pdf" style="display: none;">
+        <p id="status"></p>
+
+        <div id="pdf-navigation">
+            <button id="prev-page-button">Previous Page</button>
+            <span>Page <span id="page-num">1</span> of <span id="page-count">1</span></span>
+            <button id="next-page-button">Next Page</button>
+            <input type="number" id="page-number-input" placeholder="Go to page">
+            <button id="go-to-page-button">Go</button>
+            <input type="text" id="topic-search-input" placeholder="Search topic">
+            <button id="search-topic-button">Search</button>
+        </div>
+
+        <div id="pdf-viewer"></div>
+    </div>
+
+    <!-- Dictionary Modal -->
+    <div id="dictionary-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="word-title"></h2>
+            <p id="word-meanings"></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="./assets/js/script1.js"></script>
+    <script>
+        // JavaScript to handle hamburger menu toggle
+        document.querySelector('.hamburger-icon').addEventListener('click', function() {
+            const menu = document.querySelector('.navbar-buttons');
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

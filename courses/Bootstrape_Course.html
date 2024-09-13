@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../assets/css/Cousres.css">
+    
+
+    
+  </head>
+
+  <body>
+
+    <header class="muskan-header" data-header>
+        <div class="muskan-container">
+    
+          <a href="../Home.html" class="muskan-logo">
+            <img src="../assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+          </a>
+    
+          <nav class="muskan-navbar" data-navbar>
+            <ul class="muskan-navbar-list">
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Home</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>About</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Courses</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Our Team</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Contact</a>
+              </li>
+    
+              <li class="muskan-navbar-item muskan-search-item">
+                <input type="text" id="muskan-topic-search-input" placeholder="Search topics..." />
+                <button id="muskan-search-topic-button">Search</button>
+              </li>
+    
+              
+    
+            </ul>
+          </nav>
+    
+          <button class="muskan-header-action-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+    
+          <div class="muskan-overlay" data-nav-toggler data-overlay></div>
+    
+        </div>
+      </header>
+  
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../Home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../Home.html">Popular Courses</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Bootstrape-Course</li>
+        </ol>
+      </nav>
+
+    
+  
+    <div class="course-container">
+        <!-- Image and Pricing Box -->
+        <div id="imageBox" class="course-image-pricing">
+            <div class="course-image">
+                <img src="../assets/images/thumb-4.png" alt="Course Image">
+            </div>
+            <div class="pricing-container">
+                <div class="pricing">
+                    ₹599 <span class="original-price">₹3,699</span> <span class="discount">89% off</span>
+                </div>
+                <div class="countdown">⏳ 4 days left at this price!</div>
+                <button class="add-to-cart-button" onclick="showPaymentPopup()">Purchase</button>
+            </div>
+        </div>
+
+        <!-- Course Content Section -->
+        <div class="course-content">
+            <h1>The Complete Guide to Bootstrap</h1>
+            <p>Go From Beginner To Bootstrap Master In A Single Day!</p>
+
+            <div class="rating">Rating: 7 out of 10</div>
+            <p>(397,889 ratings) 1,323,014 students</p>
+            <div class="details">
+                <span>Created by: Archana Yadav, Developer</span>
+                <span>Last updated: 05/08/2024</span>
+                <span>Duration: 7 Weeks</span>
+                <span>Lessons: 9</span>
+                <span>Language: English / Hindi</span>
+                <span>Subtitles: English, Arabic [Auto], 14 more</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Pop-Up -->
+    <div id="paymentPopup" class="payment-popup">
+        <div class="popup-content">
+            <span class="close" onclick="hidePaymentPopup()">&times;</span>
+            <h2>Payment Details</h2>
+            <form id="paymentForm">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="upi">UPI</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+
+                <!-- UPI Payment Fields -->
+                <div id="upi-details" class="payment-method-details">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="Enter UPI ID">
+                </div>
+
+                <!-- Credit Card Payment Fields -->
+                <div id="credit-card-details" class="payment-method-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter card number">
+                    <label for="card-expiry">Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                    <label for="card-cvc">CVC:</label>
+                    <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Debit Card Payment Fields -->
+                <div id="debit-card-details" class="payment-method-details">
+                    <label for="debit-card-number">Card Number:</label>
+                    <input type="text" id="debit-card-number" name="debit-card-number" placeholder="Enter debit card number">
+                    <label for="debit-card-expiry">Expiry Date:</label>
+                    <input type="text" id="debit-card-expiry" name="debit-card-expiry" placeholder="MM/YY">
+                    <label for="debit-card-cvc">CVC:</label>
+                    <input type="text" id="debit-card-cvc" name="debit-card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Net Banking Payment Fields -->
+                <div id="net-banking-details" class="payment-method-details">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank-name" placeholder="Enter your bank name">
+                    <label for="account-number">Account Number:</label>
+                    <input type="text" id="account-number" name="account-number" placeholder="Enter account number">
+                </div>
+
+                <button type="submit">Pay ₹599</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="learn-section">
+      <h3>What you'll learn</h3>
+      <div class="learn-list">
+        <ul>
+          <li>Bootstrap Container: <code>.container</code> class is used to center and add padding around the content.</li>
+          <li>Heading: is used for the main title with a margin-bottom for spacing.</li>
+          <li>Card: <code>.card</code> component is used to wrap the list and give it a card-like appearance.</li>
+        </ul>
+        <ul class="list-unstyled">
+          <li> Learn & examine Bootstrap classes & utilities using sandbox files</li>
+          <li>Icons: <i class="bi bi-check-circle"></i> Create an enviroment boilerplate to compile Sass & customize Bootstrap.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Existing content -->
+
+    <br />
+    <br />
+    <!-- Course Features Section -->
+    <!-- Course Features Section -->
+    <div class="course-features">
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-video"></i>
+          <span>4.5 hours on-demand video</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-file-alt"></i>
+          <span>9 articles</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-download"></i>
+          <span>13 downloadable resources</span>
+        </div>
+      </div>
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-tv"></i>
+          <span>Access on mobile and TV</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-certificate"></i>
+          <span>Certificate of completion</span>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+
+
+    <div class="container">
+        <h2>Bootstrap Course Topics</h2>
+        <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(0, this)">
+              <span class="symbol">▶</span> 1. Bootstrap Introduction
+              <span class="time">[5 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                <li>What is Bootstrap?</li>
+                <li>Importance of Bootstrap in web development.</li>
+                <li>
+                  Basic Bootstrap structure (`&lt;!DOCTYPE html&gt;`, `&lt;html&gt;`,
+                  `&lt;head&gt;`, `&lt;body&gt;`).
+                </li>
+              </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Elements and Tags -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(1, this)">
+              <span class="symbol">▶</span> 2. Bootstrap Grid System
+              <span class="time ms-auto">[10 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Understanding the Grid System</strong></li>
+                  <li><strong>Creating Responsive Layouts</strong>
+                    <ul>
+                      <li>Using containers</li>
+                      <li>Working with rows and columns</li>
+                    </ul>
+                  </li>
+                  <li><strong>Advanced Grid Techniques</strong></li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Attributes -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(2, this)">
+              <span class="symbol">▶</span> 3. Bootstrap Components <span class="time ms-auto">[15 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Introduction to Bootstrap Components</strong></li>
+                  <li><strong>Common Components</strong>
+                    <ul>
+                      <li>Buttons</li>
+                      <li>Cards</li>
+                      <li>Modals</li>
+                    </ul>
+                  </li>
+                  <li><strong>Advanced Components</strong></li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Forms -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(3, this)">
+              <span class="symbol">▶</span> 4. Bootstrap Typography <span class="time ms-auto">[7 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Text Alignment and Spacing</strong></li>
+                  <li><strong>Using Text Utilities</strong></li>
+                  <li><strong>Customizing Fonts</strong></li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Links and Navigation -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(4, this)">
+              <span class="symbol">▶</span>  5. Bootstrap Forms <span class="time ms-auto">[12 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Creating Basic Forms</strong></li>
+                  <li><strong>Form Validation Techniques</strong></li>
+                  <li><strong>Advanced Form Controls</strong>
+                    <ul>
+                      <li>Select menus</li>
+                      <li>File inputs</li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Media -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(5, this)">
+              <span class="symbol">▶</span>  6. Bootstrap Buttons <span class="time ms-auto">[6 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Button Styles and Sizes</strong></li>
+                  <li><strong>Button Groups and Toolbars</strong></li>
+                  <li><strong>Using Button States</strong></li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Tables -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(6, this)">
+              <span class="symbol">▶</span> 7. Bootstrap Utilities <span class="time ms-auto">[8 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Spacing and Sizing Utilities</strong></li>
+                  <li><strong>Background and Border Utilities</strong></li>
+                  <li><strong>Display and Visibility Utilities</strong></li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Lists -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(7, this)">
+              <span class="symbol">▶</span>  8. Bootstrap Images <span class="time ms-auto">[5 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Spacing and Sizing Utilities</strong></li>
+                  <li><strong>Background and Border Utilities</strong></li>
+                  <li><strong>Display and Visibility Utilities</strong></li>
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Semantic Elements and Accessibility -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(8, this)">
+              <span class="symbol">▶</span>   9. Bootstrap Flexbox <span class="time ms-auto">[10 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li><strong>Understanding Flexbox</strong></li>
+                  <li><strong>Using Flexbox Utilities</strong></li>
+                  <li><strong>Building Flexible Layouts</strong></li>
+                </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(9, this)">
+              <span class="symbol">▶</span>  10. Bootstrap Best Practices <span class="time ms-auto">[10 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                <li><strong>Maintaining Consistency</strong></li>
+                <li><strong>Customizing Bootstrap</strong></li>
+                <li><strong>Optimizing for Performance</strong></li>
+                </ul>
+            </div>
+          </div>
+          
+          
+          
+
+      <div class="accordion">
+
+
+      </div>
+
+
+    </div>
+      
+
+        <!-- HTML Introduction -->
+       
+
+
+    <div class="description-container">
+      <h1>Description</h1>
+
+      
+          <p><strong>Bootstrap</strong> -This course is for anyone that wants to learn how to build modern websites and UIs using the Bootstrap CSS framework. This course is very beginner friendly, but is also for anyone that wants to build some cool projects..</p>
+          <p><strong>The Bootstrap Sandbox?</strong>
+  <p>We will start off by learning all of the important Bootstrap classes, utilities, helpers, etc by using the Bootstrap sandbox. This is a collection of files that are categorized for certain components and areas such as buttons, typography, grid columns, flex, etc. You will have a starter version without the classes and we will go through and add the classes and talk about them and in some cases examine the CSS. We will use the sandbox for all of the CSS components as well as the JavaScript widgets such as the carousel, accordion, toast notifications and so on
+</p>
+<p><strong>Mini-Project Challenges?</strong>
+
+
+  <p>There will be a couple mini-projects that I will ask you to complete yourself, based on what you learned in the sandbox sections. This includes a pricing grid, ratings component and a user list. I may add more to this section as well.
+
+</p>
+<p><strong>Starter Template / Boilerplate?</strong>
+
+
+  <p>We will be creating a template and environment to build our main projects. This will include using NPM (Node Package Manager) to install Bootstrap and Sass. We will customize Bootstrap by changing Sass variables and then compiling a custom bootstrap.css file. If you don't know NPM or Sass, that is fine. I explain everything as I go.
+</p>
+
+<p><strong> Main Websites?</strong>
+
+
+  <p>Next, we will use the starter template to create 5 great looking websites. In these websites, we will use Bootstrap componenrs, JavaScript widgets as well as some custom JavaScript and 3rd part libraries to give us a little more functionality.</p>
+
+
+
+          <div id="more-content" class="hidden-content"></div>
+          
+          <h2>Hands On Learning</h2>
+          <p>Dive into real-world projects and practical exercises that help you build skills by doing. Hands-on learning is the most effective way to understand and retain new concepts, especially in web development. Here’s what you’ll get:</p>
+
+          <h2>About me</h2>
+          <p>I’ve taught millions of students over the last decade, both online and in-person. My specialty is helping complete beginners change careers and break into web development roles. I teach online but also lead intensive in-person coding bootcamps. My experience teaching in a classroom informs the structure and content of all my online courses.</p>
+
+          <p>Bootstrap-styled section, you might wrap it in a Bootstrap class to enhance its presentation, depending on the context in which it's used.</p>
+          <ul>
+              <li>paragraphs</li>
+              <li>headings</li>
+              <li>links</li>
+              <li>images</li>
+              <li>forms</li>
+              <li>tables</li>
+              <li>Strong emphasis</li>
+              <li>Italic text</li>
+              <li>Emphasized text</li>
+              <li>Block quotation</li>
+              <li>Inline code</li>
+              <li>Line break</li>
+              <li>Division or container for block-level content</li>
+              <li>Container for inline content</li>
+              <li>Header section for a document or section</li>
+              <li>Footer section for a document or section</li>
+              <li>Main content area</li>
+              <li>Section of content, typically with a heading</li>
+              <li>Self-contained composition</li>
+              <li>Navigation links</li>
+              <li>Sidebar content or tangentially related content</li>
+              <li>Content that is referenced from the main flow </li>
+              <li>Caption for the content in a <figure></li>
+              
+          </ul>
+      </div>
+
+      <button id="toggle-button">Show More</button>
+  </div>
+
+
+    <script>
+      function toggleAccordion(index, headerElement) {
+        const accordionContent =
+          document.querySelectorAll(".accordion-content")[index];
+        const symbol = headerElement.querySelector(".symbol");
+
+        if (
+          accordionContent.style.display === "none" ||
+          accordionContent.style.display === ""
+        ) {
+          accordionContent.style.display = "block";
+          symbol.textContent = "▼";
+        } else {
+          accordionContent.style.display = "none";
+          symbol.textContent = "▶";
+        }
+      }
+      // Show the payment pop-up
+      function showPaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "flex";
+      }
+
+      // Hide the payment pop-up
+      function hidePaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "none";
+        hideAllPaymentDetails(); // Hide all payment method fields when closing the pop-up
+      }
+
+      // Show or hide specific payment method details based on selection
+      function showPaymentDetails() {
+        var method = document.getElementById("payment-method").value;
+        hideAllPaymentDetails(); // Hide all payment method fields
+
+        // Show the selected payment method details
+        if (method === "upi") {
+          document.getElementById("upi-details").style.display = "block";
+        } else if (method === "credit-card") {
+          document.getElementById("credit-card-details").style.display =
+            "block";
+        } else if (method === "debit-card") {
+          document.getElementById("debit-card-details").style.display = "block";
+        } else if (method === "net-banking") {
+          document.getElementById("net-banking-details").style.display =
+            "block";
+        }
+      }
+
+      // Hide all payment method fields
+      function hideAllPaymentDetails() {
+        document
+          .querySelectorAll(".payment-method-details")
+          .forEach(function (details) {
+            details.style.display = "none";
+          });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ensure the DOM is fully loaded before running the script
+        document.getElementById("paymentForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          alert("Processing payment...");
+      
+          setTimeout(function () {
+            alert("Payment successful!");
+            
+            // Update breadcrumb to show "Course Payment"
+            const breadcrumbStep = document.getElementById("breadcrumb-step");
+            const breadcrumbFinal = document.getElementById("breadcrumb-final");
+      
+            // Debugging output
+            console.log("Breadcrumb Step Element:", breadcrumbStep);
+            console.log("Breadcrumb Final Element:", breadcrumbFinal);
+      
+            if (breadcrumbStep && breadcrumbFinal) {
+              breadcrumbStep.innerHTML = '<a href="HTML_Course.html">Course Payment</a>';
+              breadcrumbFinal.textContent = "Course Video";
+            } else {
+              console.error("Breadcrumb elements not found.");
+            }
+      
+            // Redirect to the purchased page
+            window.open("Bootstrape_plalist.html", "_blank");
+
+          }, 2000); // 2-second delay to simulate payment processing
+        });
+      });
+      
+      // Attach event listener to payment method dropdown
+      document
+        .getElementById("payment-method")
+        .addEventListener("change", showPaymentDetails);
+
+        document.getElementById("toggle-button").addEventListener("click", function() {
+          var content = document.getElementById("more-content");
+          var button = document.getElementById("toggle-button");
+      
+          if (content.style.display === "none" || content.style.display === "") {
+              content.style.display = "block";
+              button.textContent = "Show Less";
+          } else {
+              content.style.display = "none";
+              button.textContent = "Show More";
+          }
+      });
+
+      
+      
+    </script>
+  </body>
+</html>

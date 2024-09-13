@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../assets/css/Cousres.css">
+
+   
+  </head>
+
+  <body>
+
+    <header class="muskan-header" data-header>
+      <div class="muskan-container">
+  
+        <a href="../Home.html" class="muskan-logo">
+          <img src="../assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+        </a>
+  
+        <nav class="muskan-navbar" data-navbar>
+          <ul class="muskan-navbar-list">
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Home</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>About</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Courses</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Our Team</a>
+            </li>
+  
+            <li class="muskan-navbar-item">
+              <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Contact</a>
+            </li>
+  
+            <li class="muskan-navbar-item muskan-search-item">
+              <input type="text" id="muskan-topic-search-input" placeholder="Search topics..." />
+              <button id="muskan-search-topic-button">Search</button>
+            </li>
+  
+            
+  
+          </ul>
+        </nav>
+  
+        <button class="muskan-header-action-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+  
+        <div class="muskan-overlay" data-nav-toggler data-overlay></div>
+  
+      </div>
+    </header>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../Home.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="../Home.html">Popular Courses</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Sql-Course</li>
+      </ol>
+    </nav>
+    
+    
+  
+    <div class="course-container">
+        <!-- Image and Pricing Box -->
+        <div id="imageBox" class="course-image-pricing">
+            <div class="course-image">
+                <img src="../assets/images/thumb-8.png" alt="Course Image">
+            </div>
+            <div class="pricing-container">
+                <div class="pricing">
+                    ₹399 <span class="original-price">₹3,699</span> <span class="discount">89% off</span>
+                </div>
+                <div class="countdown">⏳ 4 days left at this price!</div>
+                <button class="add-to-cart-button" onclick="showPaymentPopup()">Purchase</button>
+            </div>
+        </div>
+
+        <!-- Course Content Section -->
+        <div class="course-content">
+            <h1>The Complete Guide to Sql</h1>
+            <p>Go From Beginner To  Master In A Single Day!</p>
+
+            <div class="rating">Rating: 7 out of 10</div>
+            <p>(397,889 ratings) 1,323,014 students</p>
+            <div class="details">
+                <span>Created by: Sajan Sharma, Developer and Lead Instructor</span>
+                <span>Last updated: 05/08/2024</span>
+                <span>Duration: 5 Weeks</span>
+                <span>Lessons: 9</span>
+                <span>Language: English / Hindi</span>
+                <span>Subtitles: English, Arabic [Auto], 14 more</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Pop-Up -->
+    <div id="paymentPopup" class="payment-popup">
+        <div class="popup-content">
+            <span class="close" onclick="hidePaymentPopup()">&times;</span>
+            <h2>Payment Details</h2>
+            <form id="paymentForm">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="upi">UPI</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+
+                <!-- UPI Payment Fields -->
+                <div id="upi-details" class="payment-method-details">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="Enter UPI ID">
+                </div>
+
+                <!-- Credit Card Payment Fields -->
+                <div id="credit-card-details" class="payment-method-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter card number">
+                    <label for="card-expiry">Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                    <label for="card-cvc">CVC:</label>
+                    <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Debit Card Payment Fields -->
+                <div id="debit-card-details" class="payment-method-details">
+                    <label for="debit-card-number">Card Number:</label>
+                    <input type="text" id="debit-card-number" name="debit-card-number" placeholder="Enter debit card number">
+                    <label for="debit-card-expiry">Expiry Date:</label>
+                    <input type="text" id="debit-card-expiry" name="debit-card-expiry" placeholder="MM/YY">
+                    <label for="debit-card-cvc">CVC:</label>
+                    <input type="text" id="debit-card-cvc" name="debit-card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Net Banking Payment Fields -->
+                <div id="net-banking-details" class="payment-method-details">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank-name" placeholder="Enter your bank name">
+                    <label for="account-number">Account Number:</label>
+                    <input type="text" id="account-number" name="account-number" placeholder="Enter account number">
+                </div>
+
+                <button type="submit">Pay ₹399</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Learn Section Moved to the Right Side -->
+    <div class="learn-section">
+      <h3>What you'll learn</h3>
+      <div class="learn-list">
+        <ul>
+          <li>Learn how to code in SQL</li>
+          <li>Become an expert in SQL</li>
+          <li>Boost your resume by learning an in-demand skill</li>
+        </ul>
+        <ul>
+          <li>Create, design, and operate with SQL databases</li>
+          <li>Start using MySQL – the #1 Database Management System</li>
+          <li>Prepare for SQL developer, Database administrator, Business Analyst, and Business Intelligence job opportunities</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Existing content -->
+
+    <br />
+    <br />
+    <!-- Course Features Section -->
+    <!-- Course Features Section -->
+    <div class="course-features">
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-video"></i>
+          <span>4.5 hours on-demand video</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-file-alt"></i>
+          <span>9 articles</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-download"></i>
+          <span>13 downloadable resources</span>
+        </div>
+      </div>
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-tv"></i>
+          <span>Access on mobile and TV</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-certificate"></i>
+          <span>Certificate of completion</span>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+    <div class="container">
+      <h2>HTML Course Topics</h2>
+
+      <div class="accordion">
+        <!-- HTML Introduction -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(0, this)">
+            <span class="symbol">▶</span> 1. MySql Introduction
+            <span class="time">[5 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>1. Introduction to MySQL</li>
+              <li>What is MySQL?</li>
+              <li>
+                History and Evolution of MySQL
+              </li>
+              <li>Installing MySQL</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Elements and Tags -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(1, this)">
+            <span class="symbol">▶</span> 2. 2. Database Design
+            <span class="time">[8 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Creating Databases and Tables</li>
+              <li>Data Types in MySQL (e.g., INT, VARCHAR, DATE)</li>
+              <li>
+                Primary and Foreign Keys
+              </li>
+              <li>Indexes and Constraints</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Attributes -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(2, this)">
+            <span class="symbol">▶</span> 3. SQL Basics
+            <span class="time">[6 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>Basic SQL Syntax</li>
+              <li>SELECT, INSERT, UPDATE, DELETE.</li>
+              <li>WHERE, AND, OR Clauses</li>
+              <li>Sorting and Filtering Data (ORDER BY, LIMIT)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Forms -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(3, this)">
+            <span class="symbol">▶</span> 4. Joins and Relationships
+            <span class="time">[10 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN
+              </li>
+              <li>
+                CROSS JOIN vs SELF JOIN
+              </li>
+              <li>Working with Multiple Tables</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Links and Navigation -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(4, this)">
+            <span class="symbol">▶</span> 5. MySQL Functions
+            <span class="time">[7 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>String Functions (e.g., CONCAT, SUBSTRING)</li>
+              <li>Numeric Functions (e.g., ROUND, AVG)</li>
+              <li>Date Functions (e.g., NOW, DATE_ADD)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Media -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(5, this)">
+            <span class="symbol">▶</span> 6. Stored Procedures and Triggers
+            <span class="time">[9 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>What is a Stored Procedure?</li>
+              <li>
+                Creating and Executing Stored Procedures
+              </li>
+              <li>Using Parameters in Procedures</li>
+              <li>What is a Trigger?</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Tables -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(6, this)">
+            <span class="symbol">▶</span> 7. Transactions and Locking
+            <span class="time">[12 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                ACID Properties (Atomicity, Consistency, Isolation, Durability)
+              </li>
+              <li>START TRANSACTION, COMMIT, ROLLBACK</li>
+              <li>Transaction Isolation Levels</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Lists -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(7, this)">
+            <span class="symbol">▶</span>8. Performance Optimization
+            <span class="time">[5 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                Query Optimization and Indexing
+              </li>
+              <li>
+                EXPLAIN Command
+              </li>
+              <li>MySQL Query Cache</li>
+              <li>Optimizing Joins and Subqueries</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- HTML Semantic Elements and Accessibility -->
+        <div class="accordion-item">
+          <h3 class="accordion-header" onclick="toggleAccordion(8, this)">
+            <span class="symbol">▶</span> 9. User Management and Security
+            
+            <span class="time">[8 mins]</span>
+          </h3>
+          <div class="accordion-content">
+            <ul>
+              <li>
+                Creating and Managing Users
+              </li>
+              <li>
+                GRANT and REVOKE Privileges
+              </li>
+              <li>Password Management</li>
+              <li>Securing MySQL Connections</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(9, this)">
+              <span class="symbol">▶</span>10. Backup and Recovery
+              
+              <span class="time">[8 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                <li>
+                    Backing Up Databases with mysqldump
+                </li>
+                <li>
+                    Point-in-Time Recovery
+                </li>
+                <li>Restoring Databases</li>
+                <li>Using MySQL Replication for Data Redundancy</li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="description-container">
+        <h1>Description</h1>
+    
+        <p><strong>Every modern application uses SQL</strong> - even the most popular websites and software rely on SQL to manage their data! It’s an absolutely essential tool for working with databases, and it is both powerful and relatively easy to learn. SQL is the language that allows you to interact with a database: creating, reading, updating, and deleting data. Learning SQL is a critical step in any data-driven project, and this course teaches you all the SQL you need to know.</p>
+    
+        <p>This course starts with the basics and covers all the essential SQL concepts and commands. You’ll learn how to create databases and tables, insert and query data, perform complex queries using joins, and even manage databases efficiently. By the end of the course, you’ll be proficient in SQL. <strong>And the best part? You can complete the course in just a few days!</strong></p>
+    
+        <div id="more-content" class="hidden-content">
+            <h2>Hands-On Learning</h2>
+            <p>This course is designed to be interactive. In every section, you’ll apply what you’re learning through exercises, challenges, and mini-projects. Instead of just watching videos, you’ll write SQL queries, work with real databases, and solve practical problems. I’ve honed this course over years of teaching SQL, and it’s my most polished course yet!</p>
+    
+            <h2>About me</h2>
+            <p>I’ve taught thousands of students over the years, both online and in-person. My specialty is helping beginners and experienced developers alike become proficient in SQL and database management. My experience from teaching in coding bootcamps and classroom environments shapes the structure of this online course.</p>
+    
+            <p>In this course, you’ll learn about the following SQL topics:</p>
+            <ul>
+                <li>Creating databases and tables</li>
+                <li>Inserting data into tables</li>
+                <li>Querying data with SELECT statements</li>
+                <li>Filtering data using WHERE, AND, OR clauses</li>
+                <li>Joining multiple tables</li>
+                <li>Grouping and aggregating data (GROUP BY, COUNT, SUM)</li>
+                <li>Updating existing records</li>
+                <li>Deleting data from tables</li>
+                <li>Working with subqueries</li>
+                <li>Creating and managing indexes</li>
+                <li>Stored procedures and triggers</li>
+                <li>Transactions and rollback mechanisms</li>
+                <li>Database normalization and design principles</li>
+                <li>Managing users and privileges</li>
+                <li>Database backup and recovery</li>
+                <li>Optimizing database performance</li>
+            </ul>
+        </div>
+    
+        <button id="toggle-button">Show More</button>
+    </div>
+    
+
+
+    <script>
+      function toggleAccordion(index, headerElement) {
+        const accordionContent =
+          document.querySelectorAll(".accordion-content")[index];
+        const symbol = headerElement.querySelector(".symbol");
+
+        if (
+          accordionContent.style.display === "none" ||
+          accordionContent.style.display === ""
+        ) {
+          accordionContent.style.display = "block";
+          symbol.textContent = "▼";
+        } else {
+          accordionContent.style.display = "none";
+          symbol.textContent = "▶";
+        }
+      }
+      // Show the payment pop-up
+      function showPaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "flex";
+      }
+
+      // Hide the payment pop-up
+      function hidePaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "none";
+        hideAllPaymentDetails(); // Hide all payment method fields when closing the pop-up
+      }
+
+      // Show or hide specific payment method details based on selection
+      function showPaymentDetails() {
+        var method = document.getElementById("payment-method").value;
+        hideAllPaymentDetails(); // Hide all payment method fields
+
+        // Show the selected payment method details
+        if (method === "upi") {
+          document.getElementById("upi-details").style.display = "block";
+        } else if (method === "credit-card") {
+          document.getElementById("credit-card-details").style.display =
+            "block";
+        } else if (method === "debit-card") {
+          document.getElementById("debit-card-details").style.display = "block";
+        } else if (method === "net-banking") {
+          document.getElementById("net-banking-details").style.display =
+            "block";
+        }
+      }
+
+      // Hide all payment method fields
+      function hideAllPaymentDetails() {
+        document
+          .querySelectorAll(".payment-method-details")
+          .forEach(function (details) {
+            details.style.display = "none";
+          });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ensure the DOM is fully loaded before running the script
+        document.getElementById("paymentForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          alert("Processing payment...");
+      
+          setTimeout(function () {
+            alert("Payment successful!");
+            
+            // Update breadcrumb to show "Course Payment"
+            const breadcrumbStep = document.getElementById("breadcrumb-step");
+            const breadcrumbFinal = document.getElementById("breadcrumb-final");
+      
+            // Debugging output
+            console.log("Breadcrumb Step Element:", breadcrumbStep);
+            console.log("Breadcrumb Final Element:", breadcrumbFinal);
+      
+            if (breadcrumbStep && breadcrumbFinal) {
+              breadcrumbStep.innerHTML = '<a href="HTML_Course.html">Course Payment</a>';
+              breadcrumbFinal.textContent = "Course Video";
+            } else {
+              console.error("Breadcrumb elements not found.");
+            }
+      
+            // Redirect to the purchased page
+            window.open("Sql_Playlist.html", "_blank");
+          }, 2000); // 2-second delay to simulate payment processing
+        });
+      });
+      
+      // Attach event listener to payment method dropdown
+      document
+        .getElementById("payment-method")
+        .addEventListener("change", showPaymentDetails);
+
+        document.getElementById("toggle-button").addEventListener("click", function() {
+          var content = document.getElementById("more-content");
+          var button = document.getElementById("toggle-button");
+      
+          if (content.style.display === "none" || content.style.display === "") {
+              content.style.display = "block";
+              button.textContent = "Show Less";
+          } else {
+              content.style.display = "none";
+              button.textContent = "Show More";
+          }
+      });
+
+      
+      
+    </script>
+  </body>
+</html>

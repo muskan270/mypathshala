@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Welcome to E-Pathshala</title>
+<style>
+    
+
+  
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .section {
+      padding: 40px 0;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2em;
+      color: #777;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5em;
+      margin: 10px 0;
+    }
+
+    .section-title .span {
+      color: #ff6347; /* Highlight color */
+    }
+
+    .section-text {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+      color: #555;
+    }
+
+    .grid-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .grid-list li {
+      flex: 1 1 calc(25% - 20px); /* Adjust the percentage as needed */
+      display: flex;
+    }
+
+    .category-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover {
+      transform: scale(0.95);
+    }
+
+    .category-card .card-icon {
+      margin-bottom: 20px;
+    }
+
+    .category-card .card-title {
+      margin: 0 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 1.2em;
+    }
+
+    .category-card .card-title:hover {
+      color: #ff6347; /* Highlight color */
+    }
+
+    .category-card .card-text {
+      flex-grow: 1;
+      margin: 0 0 20px;
+      color: #777;
+    }
+
+    .category-card .card-badge {
+      align-self: flex-start;
+      background-color: hsl(var(--color));
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .shape {
+      position: absolute;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .video-shape-1 {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .video-shape-2 {
+      top: 60%;
+      left: 30%;
+    }
+
+    .sign-in {
+      color: #007BFF;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 
+    - primary meta tag
+  -->
+  
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&family=Poppins:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <!-- 
+    - preload images
+  -->
+  <link rel="preload" as="image" href="./assets/images/hero-bg.svg">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-1.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-2.jpg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-1.svg">
+  <link rel="preload" as="image" href="./assets/images/hero-shape-2.png">
+
+</head>
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        
+
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link">Home</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link">About</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#courses" class="navbar-link">Courses</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#Our Team" class="navbar-link">Our Team</a>
+          </li>
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link">Contact</a>
+          </li>
+          <li id="userGreeting" class="navbar-item"></li>  <!-- This will display the username -->
+          <li id="auth-item" class="navbar-item">
+            <a href="./login.html" class="sign-in" id="auth-link">Log in</a>  <!-- This link changes to 'Log Out' -->
+          </li>
+        </ul>
+        
+        
+
+      </nav>
+
+      
+
+        
+
+        <button class="header-action-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+
+    </div>
+  </header>
+  <br>
+  <br>
+  <br>
+  <section id="home">
+    <div class="image-text-container">
+      <div class="image-wrapper">
+        <img src="assets/images/home3.png" class="responsive-image" alt="Home Image">
+      </div>
+      <div class="text-wrapper bounce-animation"">
+        <h1 class="mind">Empowering <span style="color: green;">Minds</span>Shaping Futures</h1>
+        <p></p>
+      </div>
+    </div>
+  </section>
+  
+  
+ 
+      <!-- 
+        - #CATEGORY
+      -->
+
+      <section class="section category" aria-label="category">
+        <div class="container">
+    
+          <p class="section-subtitle">Categories</p>
+    
+          <h2 class="h2 section-title">
+            Welcome <span class="span">Classes</span> E-pathshala.
+          </h2>
+    
+          <p class="section-text">
+            What makes us special.
+          </p>
+    
+          <ul class="grid-list">
+    
+            <li>
+              <div class="category-card" style="--color: 170, 75%, 41%">
+    
+                <div class="card-icon">
+                  <img src="./assets/images/category-1.svg" width="40" height="40" loading="lazy"
+                    alt="Online Degree Programs" class="img">
+                </div>
+    
+                <h3 class="h3">
+                  <a href="#courses" class="card-title">Online Video Course</a>
+                </h3>
+    
+                <p class="card-text">
+                  We have a vast variety of courses free as well as paid with technical and non-technical extreme.
+                </p>
+    
+                <span class="card-badge">9 Courses</span>
+    
+              </div>
+            </li>
+    
+            <li>
+              <div class="category-card" style="--color: 351, 83%, 61%">
+    
+                <div class="card-icon">
+                  <img src="./assets/images/category-2.svg" width="40" height="40" loading="lazy"
+                    alt="Non-Degree Programs" class="img">
+                </div>
+    
+                <h3 class="h3">
+                  <a href="./webpage/book.html" class="card-title">E-Book</a>
+                </h3>
+    
+                <p class="card-text">
+                  AudioBook helps those who feel lazy in reading books and it is also helpful for visually handicapped people.
+                </p>
+    
+                <span class="card-badge">10 Books</span>
+    
+              </div>
+            </li>
+    
+            <li>
+              <div class="category-card" style="--color: 229, 75%, 58%">
+    
+                <div class="card-icon">
+                  <img src="./assets/images/category-3.svg" width="40" height="40" loading="lazy"
+                    alt="Off-Campus Programs" class="img">
+                </div>
+    
+                <h3 class="h3">
+                  <a href="pdf.html" class="card-title">PDF Study Material</a>
+                </h3>
+                <p class="card-text">
+                  Here we provide PDFs of all our course content plus PDFs of costly books.
+                </p>
+    
+                <span class="card-badge">10 Study Material</span>
+    
+              </div>
+            </li>
+    
+            <li>
+              <div class="category-card" style="--color: 42, 94%, 55%">
+    
+                <div class="card-icon">
+                  <img src="./assets/images/category-4.svg" width="40" height="40" loading="lazy"
+                    alt="Hybrid Distance Programs" class="img">
+                </div>
+    
+                <h3 class="h3">
+                  <a href="./mindrelax.html" target="_blank" class="card-title">Mind Relaxing</a>
+                </h3>
+    
+                <p class="card-text">
+                  In this, we have some mind relaxing sounds, meditation videos, games, and songs which help you gather your energy and give your 100% effort in work.
+                </p>
+    
+                <span class="card-badge">10 Videos</span>
+    
+              </div>
+            </li>
+    
+          </ul>
+    
+        </div>
+      </section>
+
+
+
+
+      <!-- 
+        - #ABOUT
+      -->
+
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+
+          <figure class="about-banner">
+
+            <div class="img-holder" style="--width: 520; --height: 370;">
+              <img src="assets/images/e path.jpg" width="520" height="370" loading="lazy" alt="about banner"
+                class="img-cover">
+            </div>
+
+            <img src="./assets/images/e_img.png" width="360" height="420" loading="lazy" alt=""
+              class="shape about-shape-1">
+
+            <img src="./assets/images/about-shape-2.svg" width="371" height="220" loading="lazy" alt=""
+              class="shape about-shape-2">
+
+            <img src="./assets/images/about-shape-3.png" width="722" height="528" loading="lazy" alt=""
+              class="shape about-shape-3">
+
+          </figure>
+
+          <div class="about-content">
+
+            <p class="section-subtitle">About Us</p>
+
+            <h2 class="h2 section-title">
+             E_learning <span class="span">
+            </h2>
+
+            <p class="section-text">
+              E_Learning has long been seen as a powerful tool for both learners and trainers. But while eLearning might be commonly perceived as delivering training online, its scope extends far beyond that. In this comprehensive guide, we will delve deep into the multifaceted advantages and benefits of eLearning, understanding how it transforms learning experiences for individuals and organizations.
+            </p>
+
+            <ul class="about-list">
+
+              <li class="about-item">
+                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                <span class="span">Expert Trainers</span>
+              </li>
+
+              <li class="about-item">
+                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                <span class="span">Online Remote Learning</span>
+              </li>
+
+              <li class="about-item">
+                <ion-icon name="checkmark-done-outline" aria-hidden="true"></ion-icon>
+
+                <span class="span">Lifetime Access</span>
+              </li>
+
+            </ul>
+
+            
+          </div>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #COURSE
+      -->
+
+       
+      <section class="section course" id="courses" aria-label="course">
+        <div class="container">
+
+          <p class="section-subtitle">Popular Courses</p>
+
+          <h2 class="h2 section-title">Pick A Course To Get Started</h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="assets/images/thumb-1.png" width="370" height="220" loading="lazy"
+                    alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Beginner</span>
+
+                  <h3 class="h3">
+                    <a href="courses/HTML_Course.html" target="_blank" class="card-title">Build Responsive Real- World Webpage with HTML</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(7/10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="29">Rs.399</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">9 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">20 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="assets/images/thumb-2.png" width="370" height="220" loading="lazy"
+                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">5 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Advanced</span>
+
+                  <h3 class="h3">
+                    <a href="courses/CSS_Course.html" class="card-title">CSS Masterclass for Software Developers</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(7 /10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="49">Rs.500</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">35 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-3.png" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">6 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Intermediate</span>
+
+                  <h3 class="h3">
+                    <a href="courses/JAVASCRIPT_Course.html" class="card-title">Javascript Masterclass for Software Developers</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.9 /10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35">Rs.2000</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">18 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <br>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-4.png" width="370" height="220" loading="lazy"
+                    alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Beginner</span>
+
+                  <h3 class="h3">
+                    <a href="courses/Bootstrape_Course.html" target="_blank" class="card-title">Build Responsive Real- World Webpage with Bootstrap</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(5.0/10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="29">Rs.400</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">20 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-5.png" width="370" height="220" loading="lazy"
+                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">6 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Advanced</span>
+
+                  <h3 class="h3">
+                    <a href="courses/jquery_Course.html" target="_blank" class="card-title">jQuery Masterclass for Software Developers</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.5 /10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="49">Rs.200</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">35 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-6.png" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Intermediate</span>
+
+                  <h3 class="h3">
+                    <a href="courses/Saas_course.html" target="_blank" class="card-title">SaaS Masterclass: Sales, Marketing and Growth</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(6.9 /10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35">Rs.700</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">18 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+            <br>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-7.png" width="370" height="220" loading="lazy"
+                    alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Beginner</span>
+
+                  <h3 class="h3">
+                    <a href="courses/php_course.html" class="card-title">Building Web Applications in PHP</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(5.0/10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="29">Rs.1500</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">20 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-8.png" width="370" height="220" loading="lazy"
+                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">8 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Advanced</span>
+
+                  <h3 class="h3">
+                    <a href="courses/SQL_playlist.html" class="card-title">Introduction to Structured Query Language (SQL)</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(6.7 /10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="49">Rs.500</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">35 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/images/thumb-9.png" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">8 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Intermediate</span>
+
+                  <h3 class="h3">
+                    <a href="courses/React_Course.html" class="card-title">The Complete ReactJs Course - Basics to Advanced</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(6.9 /10 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35">Rs.2000</data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">10 Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">18 Students</span>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+          <a href="#" class="btn has-before">
+            <span class="span">Browse more courses</span>
+
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          </a>
+
+        </div>
+      </section>
+
+
+
+
+
+
+      <!-- 
+        - #VIDEO
+      -->
+      <section class="video has-bg-image" aria-label="video"
+      style="background-image: url('./assets/images/video-bg.png')">
+      <div class="container">
+    
+        <div class="video-card">
+    
+          <div class="video-banner img-holder has-after" style="--width: ; --height: ;">
+            <video id="video" width="970" height="550" loop muted class="img-cover">
+              <source src="assets/vedio/E website.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+    
+          <button class="play-btn" aria-label="play video" onclick="playVideo()">
+            <ion-icon name="play" aria-hidden="true"></ion-icon>
+          </button>
+    
+        </div>
+    
+        <img src="./assets/images/video-shape-1.png" width="1089" height="605" loading="lazy" alt=""
+          class="shape video-shape-1">
+    
+        <img src="./assets/images/video-shape-2.png" width="158" height="174" loading="lazy" alt=""
+          class="shape video-shape-2">
+    
+      </div>
+    </section>
+    
+    <script>
+      function playVideo() {
+        const video = document.getElementById('video');
+        if (video.paused) {
+          video.play();
+          video.muted = false; // Unmute the video when it starts playing
+        } else {
+          video.pause();
+        }
+      }
+    </script>
+    
+
+
+
+
+      <!-- 
+        - #STATE
+      -->
+
+      <section class="section stats" aria-label="stats">
+        <div class="container">
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="stats-card" style="--color: 170, 75%, 41%">
+                <h3 class="card-title">20</h3>
+
+                <p class="card-text">Student Enrolled</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="stats-card" style="--color: 351, 83%, 61%">
+                <h3 class="card-title">90</h3>
+
+                <p class="card-text">Class Completed</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="stats-card" style="--color: 260, 100%, 67%">
+                <h3 class="card-title">100%</h3>
+
+                <p class="card-text">Satisfaction Rate</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="stats-card" style="--color: 42, 94%, 55%">
+                <h3 class="card-title">10</h3>
+
+                <p class="card-text">Top Instructors</p>
+              </div>
+            </li>
+
+          </ul>
+
+        </div>
+      </section>
+
+
+
+
+
+      <!-- 
+        - #Our Team
+      -->
+
+      <section class="section blog has-bg-image" id="Our Team" aria-label="blog"
+        style="background-image: url('./assets/images/blog-bg.svg')">
+        <div class="container">
+
+          <!-- <p class="section-subtitle">Latest Articles</p> -->
+
+          <h2 class="h2 section-title">Our Team</h2>
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
+                  <img src="./assets/images/sajan.jpeg" width="370" height="370" loading="lazy"
+                    alt="Become A Better Blogger: Content Planning" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <a href="#" class="card-btn" aria-label="read more">
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                  
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Sajan Sharma</a>
+                  </h3>
+
+                  <ul class="card-meta-list">
+
+
+                  </ul>
+
+                  <p class="card-text">
+                    Frontend developer
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
+                  <img src="./assets/images/shivani.jpeg" width="370" height="370" loading="lazy"
+                    alt="Become A Better Blogger: Content Planning" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <a href="#" class="card-btn" aria-label="read more">
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                 
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Shivani</a>
+                  </h3>
+
+                  <ul class="card-meta-list">
+
+                    
+
+                  </ul>
+
+                  <p class="card-text">
+                    Frontend developer
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
+                  <img src="./assets/images/archana.jpeg" width="370" height="370" loading="lazy"
+                    alt="Become A Better Blogger: Content Planning" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <a href="#" class="card-btn" aria-label="read more">
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Archana Yadav</a>
+                  </h3>
+
+                  <ul class="card-meta-list">
+
+                    
+
+                  </ul>
+
+                  <p class="card-text">
+                   Frontend Developers
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            
+            <li>
+              <div class="blog-card">
+
+                <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
+                  <img src="./assets/images/muskan.jpeg" width="370" height="370" loading="lazy"
+                    alt="Become A Better Blogger: Content Planning" class="img-cover">
+                </figure>
+
+                <div class="card-content">
+
+                  <a href="#" class="card-btn" aria-label="read more">
+                    <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+                  </a>
+
+                 
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Muskan</a>
+                  </h3>
+
+                  <ul class="card-meta-list">
+
+                    
+
+                  </ul>
+
+                  <p class="card-text">
+                    Frontend Developer
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+          </ul>
+
+
+          
+
+          <img src="./assets/images/blog-shape.png" width="186" height="186" loading="lazy" alt=""
+            class="shape blog-shape">
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+  <footer class="footer" id="contact" style="background-image: url('./assets/images/footer-bg.png')">
+
+    <div class="footer-top section">
+      <div class="container grid-list">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/footer_logo.png" width="90" height="50" alt="EduWeb logo">
+          </a>
+
+          <p class="footer-brand-text">
+            "Unlock limitless learning with E-Pathshala – your gateway to knowledge anytime, anywhere. Empower your future, enhance your productivity.".
+          </p>
+
+          <div class="wrapper">
+            <span class="span">Add:</span>
+
+            <address class="address">NSTI-noida sector-1</address>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Call:</span>
+
+            <a href="tel:+011234567890" class="footer-link">+01 123 4567 890</a>
+          </div>
+
+          <div class="wrapper">
+            <span class="span">Email:</span>
+
+            <a href="mailto:info@eduweb.com" class="footer-link">E. pathshala19@edu.com</a>
+          </div>
+
+        </div>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Online Platform</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Courses</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Instructor</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Events</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Instructor Profile</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Purchase Guide</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-list">
+
+          <li>
+            <p class="footer-list-title">Links</p>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact Us</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Gallery</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">News & Articles</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">FAQ's</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Sign In/Registration</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Coming Soon</a>
+          </li>
+
+        </ul>
+
+        <div class="footer-list">
+
+          <p class="footer-list-title">Contacts</p>
+
+          <p class="footer-list-text">
+            Enter your email address to register to our newsletter subscription
+          </p>
+
+          <form action="" class="newsletter-form">
+            <input type="email" name="email_address" placeholder="Your email" required class="input-field">
+
+            <button type="submit" class="btn has-before">
+              <span class="span">Subscribe</span>
+
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </form>
+
+          <ul class="social-list">
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          Copyright 2024 All Rights Reserved by <a href="#" class="copyright-link">future_coder</a>
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="back top top" data-back-top-btn>
+    <ion-icon name="chevron-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+<script>
+  window.onload = function() {
+    const authLink = document.getElementById('auth-link');
+    const userGreeting = document.getElementById('userGreeting');
+
+    // Function to update the auth link and display the welcome message
+    function updateNavbar() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Check if user is logged in
+        const loggedInUser = localStorage.getItem('loggedInUser');  // Get the stored username
+
+        if (isLoggedIn && loggedInUser) {
+            // Show the welcome message and username in the navbar
+            userGreeting.textContent = `${loggedInUser}`;
+            
+            // Change the 'Log In' link to 'Log Out'
+            authLink.textContent = 'Log out';
+            authLink.href = '#';
+            authLink.onclick = function() {
+                // Log out the user
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('loggedInUser');
+                window.location.reload(); // Refresh the page to update the navbar
+            };
+        } else {
+            // If user is not logged in, show 'Log in' link
+            userGreeting.textContent = '';  // Clear welcome message
+            authLink.textContent = 'Log in';
+            authLink.href = './login.html';
+            authLink.onclick = null;  // Remove the logout event handler
+        }
+    }
+
+    // Update the navbar on page load
+    updateNavbar();
+};
+
+</script>
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../assets/css/Cousres.css">
+
+    
+
+  
+  </head>
+
+  <body>
+
+    <header class="muskan-header" data-header>
+        <div class="muskan-container">
+    
+          <a href="../Home.html" class="muskan-logo">
+            <img src="../assets/images/logo_image.jpg" width="30%" height="30%" alt="EduWeb logo">
+          </a>
+    
+          <nav class="muskan-navbar" data-navbar>
+            <ul class="muskan-navbar-list">
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Home</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>About</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Courses</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Our Team</a>
+              </li>
+    
+              <li class="muskan-navbar-item">
+                <a href="../Home.html" class="muskan-navbar-link" data-nav-link>Contact</a>
+              </li>
+    
+              <li class="muskan-navbar-item muskan-search-item">
+                <input type="text" id="muskan-topic-search-input" placeholder="Search topics..." />
+                <button id="muskan-search-topic-button">Search</button>
+              </li>
+    
+              
+    
+            </ul>
+          </nav>
+    
+          <button class="muskan-header-action-btn" aria-label="open menu" data-nav-toggler>
+            <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+          </button>
+    
+          <div class="muskan-overlay" data-nav-toggler data-overlay></div>
+    
+        </div>
+      </header>
+  
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../Home.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../Home.html">Popular Courses</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="./Saas_course.html">SAAS-Course</a></li>
+          <li class="breadcrumb-item active" aria-current="page">SAAS-Course</li>
+        </ol>
+      </nav>
+    
+    
+  
+    <div class="course-container">
+        <!-- Image and Pricing Box -->
+        <div id="imageBox" class="course-image-pricing">
+            <div class="course-image">
+                <img src="../assets/images/thumb-6.png" alt="Course Image">
+            </div>
+            <div class="pricing-container">
+                <div class="pricing">
+                    ₹599 <span class="original-price">₹3,699</span> <span class="discount">89% off</span>
+                </div>
+                <div class="countdown">⏳ 4 days left at this price!</div>
+                <button class="add-to-cart-button" onclick="showPaymentPopup()">Purchase</button>
+            </div>
+        </div>
+
+        <!-- Course Content Section -->
+        <div class="course-content">
+            <h1>The Complete Guide to SAAS</h1>
+            <p>Go From Beginner To SAAS Master In A Single Day!</p>
+
+            <div class="rating">Rating: 7 out of 10</div>
+            <p>(397,889 ratings) 1,323,014 students</p>
+            <div class="details">
+                <span>Created by: Archana Yadav, Developer</span>
+                <span>Last updated: 05/08/2024</span>
+                <span>Duration: 7 Weeks</span>
+                <span>Lessons: 9</span>
+                <span>Language: English / Hindi</span>
+                <span>Subtitles: English, Arabic [Auto], 14 more</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Pop-Up -->
+    <div id="paymentPopup" class="payment-popup">
+        <div class="popup-content">
+            <span class="close" onclick="hidePaymentPopup()">&times;</span>
+            <h2>Payment Details</h2>
+            <form id="paymentForm">
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" name="payment-method" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="upi">UPI</option>
+                    <option value="credit-card">Credit Card</option>
+                    <option value="debit-card">Debit Card</option>
+                    <option value="net-banking">Net Banking</option>
+                </select>
+
+                <!-- UPI Payment Fields -->
+                <div id="upi-details" class="payment-method-details">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="Enter UPI ID">
+                </div>
+
+                <!-- Credit Card Payment Fields -->
+                <div id="credit-card-details" class="payment-method-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Enter card number">
+                    <label for="card-expiry">Expiry Date:</label>
+                    <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY">
+                    <label for="card-cvc">CVC:</label>
+                    <input type="text" id="card-cvc" name="card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Debit Card Payment Fields -->
+                <div id="debit-card-details" class="payment-method-details">
+                    <label for="debit-card-number">Card Number:</label>
+                    <input type="text" id="debit-card-number" name="debit-card-number" placeholder="Enter debit card number">
+                    <label for="debit-card-expiry">Expiry Date:</label>
+                    <input type="text" id="debit-card-expiry" name="debit-card-expiry" placeholder="MM/YY">
+                    <label for="debit-card-cvc">CVC:</label>
+                    <input type="text" id="debit-card-cvc" name="debit-card-cvc" placeholder="CVC">
+                </div>
+
+                <!-- Net Banking Payment Fields -->
+                <div id="net-banking-details" class="payment-method-details">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" name="bank-name" placeholder="Enter your bank name">
+                    <label for="account-number">Account Number:</label>
+                    <input type="text" id="account-number" name="account-number" placeholder="Enter account number">
+                </div>
+
+                <button type="submit">Pay ₹599</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="learn-section">
+      <h3>What you'll learn</h3>
+      <div class="learn-list">
+        <ul>
+          <li>SaaS marketing:</li>
+          <li>SaaS lead nurturing.</li>
+          <li>Software marketing.</li>
+          <li>SaaS sales.</li>
+          <li>SaaS app.</li>
+          
+        </ul>
+        <ul class="list-unstyled">
+          <li> How to generate demo requests, free trial sign-ups, and paying customers</li>
+          <li>SaaS demand generation</li>
+          <li>Startup</li>
+        <li>SaaS startup</li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- Existing content -->
+
+    <br />
+    <br />
+    <!-- Course Features Section -->
+    <!-- Course Features Section -->
+    <div class="course-features">
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-video"></i>
+          <span>4.5 hours on-demand video</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-file-alt"></i>
+          <span>9 articles</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-download"></i>
+          <span>13 downloadable resources</span>
+        </div>
+      </div>
+      <div class="feature-column">
+        <div class="feature-item">
+          <i class="fas fa-tv"></i>
+          <span>Access on mobile and TV</span>
+        </div>
+        <div class="feature-item">
+          <i class="fas fa-certificate"></i>
+          <span>Certificate of completion</span>
+        </div>
+      </div>
+      <br />
+      <br />
+    </div>
+
+
+    <div class="container">
+        <h2>SAAS Course Topics</h2>
+        <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(0, this)">
+              <span class="symbol">▶</span> 1. SaaS in Modern Business
+              <span class="time">[5 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+               <li> Benefits of Adopting SaaS Solutions</li>
+            <li>Key Industries Leveraging SaaS Platforms</li>
+                
+              </ul>
+            </div>
+          </div>
+         
+  
+          <!-- HTML Elements and Tags -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(1, this)">
+              <span class="symbol">▶</span> 2. The Future of SaaS
+              <span class="time ms-auto">[10 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+            <li> Emerging Trends in SaaS</li>
+        <li>How AI is Transforming SaaS Offerings</li>
+                    </ul>
+    
+                  
+            </div>
+          </div>
+  
+          <!-- HTML Attributes -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(2, this)">
+              <span class="symbol">▶</span> 3. SaaS vs. Traditional Software <span class="time ms-auto">[15 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                <li>Key Differences Between SaaS and On-Premise Software</li>
+                    
+            <li> Advantages of SaaS for Small to Large Enterprises</li>
+                    </ul>    
+            </div>
+          </div>
+  
+          <!-- HTML Forms -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(3, this)">
+              <span class="symbol">▶</span> 4.Security in SaaS Applications <span class="time ms-auto">[7 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+            <li>  Understanding Data Protection in SaaS</li>
+        <li>Best Practices for Securing SaaS Platforms</li>
+
+                  
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Links and Navigation -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(4, this)">
+              <span class="symbol">▶</span>  5. Cost-Effective SaaS Solutions for Startups <span class="time ms-auto">[12 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li>Top SaaS Tools Every Startup Should Use</li>
+                   <li>How SaaS Saves Money for Growing Businesses</li>
+                  
+              </ul>
+                     
+            </div>
+          </div>
+  
+          <!-- HTML Media -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(5, this)">
+              <span class="symbol">▶</span>  6. SaaS Customer Retention Strategies <span class="time ms-auto">[6 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li>How to Reduce Churn in SaaS Businesses</li>
+                  <li>Improving User Experience in SaaS Applications</li>
+                  
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Tables -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(6, this)">
+              <span class="symbol">▶</span> 7. SaaS Integration with Existing Systems <span class="time ms-auto">[8 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li>Key Considerations When Integrating SaaS</li>
+                    <li> Best Practices for SaaS and Legacy System Integration</li>
+                  
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Lists -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(7, this)">
+              <span class="symbol">▶</span>  8. The Role of APIs in SaaS Development <span class="time ms-auto">[5 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li>Why APIs are Crucial for SaaS Growth</li>
+                   <li> Examples of Successful SaaS API Integrations</li>
+                  
+                </ul>
+            </div>
+          </div>
+  
+          <!-- HTML Semantic Elements and Accessibility -->
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(8, this)">
+              <span class="symbol">▶</span>   9.SaaS for Remote Work and Collaboration <span class="time ms-auto">[10 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                  <li>Best SaaS Tools for Managing Remote Teams</li>
+                  <li> How SaaS Enhances Productivity in Distributed Workforces</li>
+                
+                </ul>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header" onclick="toggleAccordion(9, this)">
+              <span class="symbol">▶</span>  10.SaaS Pricing Models<span class="time ms-auto">[10 mins]</span>
+            </h3>
+            <div class="accordion-content">
+              <ul>
+                <li>Understanding SaaS Subscription Models</li>
+                   <li>How to Choose the Right SaaS Pricing Strategy</li>
+                
+                </ul>
+            </div>
+          </div>
+          
+          
+          
+
+      <div class="accordion">
+
+
+      </div>
+
+
+    </div>
+      
+
+        <!-- HTML Introduction -->
+       
+
+
+    <div class="description-container">
+      <h1>Description</h1>
+
+      
+          <p><strong>What is SaaS?</strong> -SaaS (Software as a Service) is a cloud-based delivery model where software applications are hosted by a provider and made available to users over the internet. Instead of installing and maintaining software on local machines, users can access these applications via a web browser, providing unparalleled flexibility and scalability for businesses and individuals alike.</p>
+          <p><strong>Key Benefits of SaaS</strong>
+  <p>Accessibility: SaaS applications can be accessed anytime, anywhere, from any device with internet connectivity.
+    Cost-Effective: No need for expensive hardware, software licenses, or on-premise servers. SaaS typically operates on a subscription-based model, allowing for predictable costs.
+    Scalability: As your business grows, SaaS platforms can easily scale with you, offering flexible pricing tiers and features to match your needs.
+    Automatic Updates: SaaS providers handle all software updates and maintenance, ensuring that users always have access to the latest features and security patches.
+    Integration: Many SaaS applications offer seamless integration with other cloud-based tools and services, enhancing productivity and collaboration.</p>
+</p>
+          <div id="more-content" class="hidden-content"></div>
+          
+          <h2>Hands On Learning</h2>
+          <p> <strong>Coding & Web Development:</strong> Building real websites or applications from scratch.
+           <p><strong> Product Design: </strong>Prototyping and testing designs in a real-world context.</p>
+        <p><strong> Marketing: </strong> Running live campaigns and analyzing performance metrics.</p>
+       <p> <strong> Project Management: </strong>Managing teams and delivering projects with actual deadlines and deliverables.</p>
+          <h2>About me</h2>
+          <p>Hands-on learning is a dynamic, interactive educational approach that focuses on learning by doing. Unlike traditional learning methods that rely heavily on lectures or reading, hands-on learning immerses learners in real-world tasks and experiences, allowing them to actively apply concepts and solve problems.
+
+            This approach fosters deeper understanding and retention of material, as learners engage directly with the subject matter. It encourages creativity, critical thinking, and collaboration, making it particularly effective for fields like web development, design, engineering, and business, where practical experience is key to mastering skills.</p>
+         
+      </div>
+
+      <button id="toggle-button">Show More</button>
+  </div>
+
+
+    <script>
+      function toggleAccordion(index, headerElement) {
+        const accordionContent =
+          document.querySelectorAll(".accordion-content")[index];
+        const symbol = headerElement.querySelector(".symbol");
+
+        if (
+          accordionContent.style.display === "none" ||
+          accordionContent.style.display === ""
+        ) {
+          accordionContent.style.display = "block";
+          symbol.textContent = "▼";
+        } else {
+          accordionContent.style.display = "none";
+          symbol.textContent = "▶";
+        }
+      }
+      // Show the payment pop-up
+      function showPaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "flex";
+      }
+
+      // Hide the payment pop-up
+      function hidePaymentPopup() {
+        document.getElementById("paymentPopup").style.display = "none";
+        hideAllPaymentDetails(); // Hide all payment method fields when closing the pop-up
+      }
+
+      // Show or hide specific payment method details based on selection
+      function showPaymentDetails() {
+        var method = document.getElementById("payment-method").value;
+        hideAllPaymentDetails(); // Hide all payment method fields
+
+        // Show the selected payment method details
+        if (method === "upi") {
+          document.getElementById("upi-details").style.display = "block";
+        } else if (method === "credit-card") {
+          document.getElementById("credit-card-details").style.display =
+            "block";
+        } else if (method === "debit-card") {
+          document.getElementById("debit-card-details").style.display = "block";
+        } else if (method === "net-banking") {
+          document.getElementById("net-banking-details").style.display =
+            "block";
+        }
+      }
+
+      // Hide all payment method fields
+      function hideAllPaymentDetails() {
+        document
+          .querySelectorAll(".payment-method-details")
+          .forEach(function (details) {
+            details.style.display = "none";
+          });
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Ensure the DOM is fully loaded before running the script
+        document.getElementById("paymentForm").addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent the default form submission
+          alert("Processing payment...");
+      
+          setTimeout(function () {
+            alert("Payment successful!");
+            
+            // Update breadcrumb to show "Course Payment"
+            const breadcrumbStep = document.getElementById("breadcrumb-step");
+            const breadcrumbFinal = document.getElementById("breadcrumb-final");
+      
+            // Debugging output
+            console.log("Breadcrumb Step Element:", breadcrumbStep);
+            console.log("Breadcrumb Final Element:", breadcrumbFinal);
+      
+            if (breadcrumbStep && breadcrumbFinal) {
+              breadcrumbStep.innerHTML = '<a href="HTML_Course.html">Course Payment</a>';
+              breadcrumbFinal.textContent = "Course Video";
+            } else {
+              console.error("Breadcrumb elements not found.");
+            }
+      
+            // Redirect to the purchased page
+            window.open("SAAS_playlist.html", "_blank");
+          }, 2000); // 2-second delay to simulate payment processing
+        });
+      });
+      
+      // Attach event listener to payment method dropdown
+      document
+        .getElementById("payment-method")
+        .addEventListener("change", showPaymentDetails);
+
+        document.getElementById("toggle-button").addEventListener("click", function() {
+          var content = document.getElementById("more-content");
+          var button = document.getElementById("toggle-button");
+      
+          if (content.style.display === "none" || content.style.display === "") {
+              content.style.display = "block";
+              button.textContent = "Show Less";
+          } else {
+              content.style.display = "none";
+              button.textContent = "Show More";
+          }
+      });
+
+      
+      
+    </script>
+  </body>
+</html>

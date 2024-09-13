@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Pathshala Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        table, th, td {
+            border: none;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #34495e;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .add-user-form {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .add-user-form h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        .add-user-form input, .add-user-form select {
+            width: calc(50% - 20px);
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .add-user-form input:focus, .add-user-form select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .add-user-form button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            width: 100%;
+        }
+
+        .add-user-form button:hover {
+            background-color: #2980b9;
+        }
+
+        .remove-btn {
+            color: #e74c3c;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .remove-btn:hover {
+            color: #c0392b;
+        }
+
+        @media (max-width: 768px) {
+            .add-user-form input, .add-user-form select {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            th, td {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>E-Pathshala Admin Panel</h1>
+
+    <!-- Table to display registered users -->
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic rows will be inserted here -->
+        </tbody>
+    </table>
+
+    <!-- Form to add new users -->
+    <div class="add-user-form">
+        <h3>Add New User</h3>
+        <input type="text" id="newFullName" placeholder="Full Name" required>
+        <input type="email" id="newEmail" placeholder="Email" required>
+        <input type="tel" id="newPhone" placeholder="Phone" required>
+        <select id="newGender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <button id="addUserBtn">Add User</button>
+    </div>
+
+    <script>
+        // Get registered users from localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Function to render users in the table
+        function renderUsers() {
+            const userTableBody = document.querySelector('#userTable tbody');
+            userTableBody.innerHTML = '';
+
+            users.forEach((user, index) => {
+                const row = `
+                    <tr>
+                        <td>${user.fullName}</td>
+                        <td>${user.email}</td>
+                        <td>${user.phone}</td>
+                        <td>${user.gender}</td>
+                        <td><span class="remove-btn" onclick="removeUser(${index})">Remove</span></td>
+                    </tr>
+                `;
+                userTableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        // Function to remove a user
+        function removeUser(index) {
+            if (confirm('Are you sure you want to remove this user?')) {
+                users.splice(index, 1);
+                localStorage.setItem('users', JSON.stringify(users));  // Update localStorage
+                renderUsers();  // Re-render the table
+            }
+        }
+
+        // Function to add a new user
+        function addUser() {
+            const fullName = document.getElementById('newFullName').value;
+            const email = document.getElementById('newEmail').value;
+            const phone = document.getElementById('newPhone').value;
+            const gender = document.getElementById('newGender').value;
+
+            // Validate inputs
+            if (fullName && email && phone && gender) {
+                const newUser = { fullName, email, phone, gender };
+                users.push(newUser);  // Add the new user to the list
+                localStorage.setItem('users', JSON.stringify(users));  // Save to localStorage
+                renderUsers();  // Re-render the table
+                alert('User added successfully!');
+
+                // Clear input fields
+                document.getElementById('newFullName').value = '';
+                document.getElementById('newEmail').value = '';
+                document.getElementById('newPhone').value = '';
+                document.getElementById('newGender').value = '';
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+
+        // Add event listener to "Add User" button
+        document.getElementById('addUserBtn').addEventListener('click', addUser);
+
+        // Initial render of users
+        renderUsers();
+    </script>
+
+</body>
+</html>

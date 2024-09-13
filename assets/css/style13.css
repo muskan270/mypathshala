@@ -1,0 +1,356 @@
+/* Reset some default browser styles */
+body, h1, button, select {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ececf6;
+}
+
+/* Navigation bar styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 15px; /* Adjusted for better spacing */
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    height: 50px;
+}
+
+/* Container for buttons and select */
+.navbar-buttons {
+    display: none; /* Initially hidden, will be shown when hamburger is clicked */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background-color: #007bff;
+    width: 250px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Buttons and dropdown */
+.navbar-buttons button, 
+.navbar-buttons select,
+.navbar-buttons .dropbtn {
+    margin: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    width: calc(100% - 20px);
+}
+
+/* Hover effect for buttons */
+.navbar-buttons button:hover,
+.navbar-buttons select:hover,
+.navbar-buttons .dropbtn:hover {
+    background-color: #0056b3;
+}
+
+/* Tooltip styles */
+.navbar-buttons button[title]:hover::after,
+.navbar-buttons select[title]:hover::after,
+.navbar-buttons .dropbtn[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    white-space: normal;
+    font-size: 14px;
+    line-height: 1.4;
+    width: 200px;
+    text-align: center;
+    z-index: 1001;
+    opacity: 0.9;
+}
+
+/* Change the font color of the tooltip */
+.navbar-buttons button[title]:hover::after,
+.navbar-buttons select[title]:hover::after {
+    color: #ffeb3b;
+    font-size: 16px;
+    width: 220px;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border-radius: 8px;
+}
+
+/* Show dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown items */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Additional styling for dropdown button */
+.dropbtn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button hover effect */
+.dropbtn:hover {
+    background-color: #0056b3;
+}
+
+
+.marquee-container {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    text-align: center;
+    border-bottom: 1px solid #4A90E2;
+    margin-left: 90px;
+    margin-right:40px;
+    width: calc(114% - 290px);
+    box-sizing: border-box;
+    height: 60px;
+    line-height: 60px; /* Center text vertically */
+    overflow: hidden;
+}
+
+.marquee-container b {
+    display: inline-block;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+/* Container styles */
+.container {
+    padding: 20px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* PDF viewer styles */
+#pdf-viewer {
+    width: 80vw;
+    height: 80vh;
+    border: 1px solid #fff;
+    overflow: auto;
+    background-color: #fff;
+    margin-top: 20px;
+    padding: 1px;
+    font-size: 16px; /* Adjusted for readability */
+    color: #000;
+}
+
+/* PDF navigation styles */
+#pdf-navigation {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Navigation buttons and input styles */
+#pdf-navigation button,
+#pdf-navigation input {
+    margin-right: 10px;
+    padding: 5px 10px;
+}
+
+/* Book animation styles */
+.book {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30rem;
+    height: 20rem;
+    perspective: 70rem;
+}
+
+/* Add this CSS to hide the book animation */
+.hide-animation {
+    display: none;
+}
+
+.cover, .page {
+    background-color: #e9e6c4;
+    transform: rotateY(0deg);
+    position: absolute;
+    width: 14rem;
+    height: 20rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 5px 0 0 5px;
+    box-shadow: inset 3px 0px 20px rgba(202, 197, 197, 0.2),
+                0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cover {
+    background-color: #36354e;
+    z-index: 1;
+}
+
+.page {
+    z-index: 999;
+    top: 0.5rem;
+    left: 0.5rem;
+    text-align: right;
+    font-size: 12px;
+    color: #f0e8e8;
+    font-family: monospace;
+}
+
+.page::before, .page::after {
+    display: block;
+    border-top: 1px dashed rgba(0, 0, 0, 0.3);
+    content: "";
+    padding-bottom: 1rem;
+}
+
+.cover.turn {
+    animation: bookCover 15s forwards;
+}
+
+.page.turn {
+    animation: bookOpen 15s forwards;
+}
+
+.page:nth-of-type(1) {
+    animation-delay: 0.05s;
+}
+
+.page:nth-of-type(2) {
+    animation-delay: 0.33s;
+}
+
+.page:nth-of-type(3) {
+    animation-delay: 0.66s;
+}
+
+.page:nth-of-type(4) {
+    animation: bookOpen150deg 15s forwards;
+    animation-delay: 0.99s;
+}
+
+.page:nth-of-type(5) {
+    animation: bookOpen30deg 15s forwards;
+    animation-delay: 1.2s;
+}
+
+.page:nth-of-type(6) {
+    animation: bookOpen55deg 15s forwards;
+    animation-delay: 1.25s;
+}
+
+@keyframes bookOpen {
+    30% { z-index: 999; }
+    100% { transform: rotateY(180deg); z-index: 999; }
+}
+
+@keyframes bookCover {
+    30% { z-index: 999; }
+    100% { transform: rotateY(180deg); z-index: 1; }
+}
+
+@keyframes bookOpen150deg {
+    30% { z-index: 999; }
+    100% { transform: rotateY(150deg); z-index: 999; }
+}
+
+@keyframes bookOpen55deg {
+    30% { z-index: 999; }
+    100% { transform: rotateY(55deg); z-index: 999; }
+}
+
+@keyframes bookOpen30deg {
+    50% { z-index: 999; }
+    100% { transform: rotateY(30deg); z-index: 999; }
+}
+
+/* Hide the animation after it completes */
+.hide-animation {
+    display: none;
+}
+
+/* Dictionary Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
